@@ -9,7 +9,6 @@ header {
     padding: 5px;
     margin: 30px;
     border: 0px;
-    /* height: 70px; */
 }
 
 #logo {
@@ -33,13 +32,13 @@ header {
 }
 
 .container {
-    background-color: grey;
-    margin: 0 auto;
     margin: 30px;
-    /* position: relative; */
+    position: relative;
+    background-color: lightgrey;
 }
 
 .container img {
-    width: 100vw;
-    margin: 0 auto;
+    max-width: 100%;
+    padding-bottom: 0;
+    filter: brightness(70%);
 }
