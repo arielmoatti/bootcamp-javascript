@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: white;
+}
+
+header {
+    padding: 5px;
+    margin: 30px;
+    border: 0px;
+    /* height: 70px; */
+}
+
+#logo {
+    height: 20px;
+    width: 20px;
+    float: left;
+}
+
+#menu {
+    height: 20px;
+    width: 20px;
+    float: right;
+}
+
+#logo img {
+    height: 30px;
+}
+
+#menu img {
+    height: 30px;
+}
+
+.container {
+    background-color: grey;
+    margin: 0 auto;
+    margin: 30px;
+    /* position: relative; */
+}
+
+.container img {
+    width: 100vw;
+    margin: 0 auto;
+}
