@@ -7,9 +7,9 @@ body {
 }
 
 header {
-    padding: 5px;
+    padding: 30px;
     /* margin: 30px; */
-    height: fit-content;
+    height: 80px;
     border: 0px;
 }
 
@@ -34,16 +34,18 @@ header {
 }
 
 .container {
-    /* margin: 30px; */
     /* height: 200px; */
-    position: relative;
+    /* height: 600px; */
+    /* position: relative; */
+    /* overflow: hidden; */
     background-color: lightgrey;
 }
 
 .container img {
     width: 100%;
     /* height: 400px; */
-    object-fit: scale-down;
+    margin: 0px 0px 0px 0px;
+    object-fit: fill;
     padding-bottom: 0;
     filter: brightness(70%);
 
@@ -56,4 +58,26 @@ header {
 } */
 section div {
     display: inline-block;
+    /* padding: 20px 50px 10px 50px; */
+}
+
+h2 {
+    font-family: bookman;
+    font-weight: bolder;
+}
+
+p {
+    font-family: bookman;
+    /* word-wrap: normal; */
+}
+
+.leftBlock {
+    float: left;
+}
+.rightBlock {
+    float: right;
+}
+
+section img {
+    height: 35px;
 }
