@@ -15,3 +15,4 @@ function fizzbuzz() {
         }
     }
 }
+fizzbuzz("test");

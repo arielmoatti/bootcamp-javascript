@@ -24,7 +24,7 @@ function logType(arg) {
         console.log("I have no idea!");
     }
 }
-logType([]);
+logType(10);
 
 // 2. part "create inverted new object"
 var a = {
