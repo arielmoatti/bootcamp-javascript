@@ -3,14 +3,19 @@
     margin: 0;
 }
 body {
-    background-color: white;
+    font-family: bookman;
 }
 
 header {
+    background-color: white;
+
     padding: 30px;
     /* margin: 30px; */
     height: 80px;
     border: 0px;
+}
+main {
+    position: relative;
 }
 
 #logo {
@@ -33,26 +38,51 @@ header {
     height: 30px;
 }
 
-.container {
-    /* height: 200px; */
-    /* height: 600px; */
-    /* position: relative; */
-    /* overflow: hidden; */
+section {
     background-color: lightgrey;
 }
 
-.container img {
+.bgImg {
     width: 100%;
+    position: relative;
     /* height: 400px; */
     margin: 0px 0px 0px 0px;
     object-fit: fill;
     padding-bottom: 0;
     filter: brightness(70%);
+    /* z-index: -1; */
+    /* visibility: hidden; */
 
     /* transform: translateX(10%); */
     /* top: 50%; */
 }
 
+.welBtn {
+    position: absolute;
+    top: 50%;
+    width: 100%
+    text-align: center;
+}
+
+.welBtn p {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    padding: 15px;
+}
+
+.welBtn a {
+    width: 100%;
+    text-align: center;
+    background-color: yellow;
+    color: darkorange;
+    border: 5px solid darkorange;
+    border-radius: 50px;
+    padding: 5px 30px;
+    font-size: 20px;
+    text-decoration: none;
+}
 /* #menu img:hover {
     transform: scale(1.5);
 } */
@@ -62,22 +92,48 @@ section div {
 }
 
 h2 {
-    font-family: bookman;
     font-weight: bolder;
 }
 
-p {
-    font-family: bookman;
-    /* word-wrap: normal; */
-}
-
 .leftBlock {
-    float: left;
+    display: inline-block;
+
+    /* float: left; */
+    /* width: 48%; */
 }
 .rightBlock {
-    float: right;
+    display: inline-block;
+    /* float: right; */
+    /* width: 48%; */
 }
 
-section img {
+.roundImg {
     height: 35px;
+}
+
+/* temp borders */
+
+.upper {
+    border: 2px solid black;
+}
+
+.lower {
+    border: 2px solid black;
+}
+.leftBlock {
+    border: 1px solid green;
+}
+
+.rightBlock {
+    border: 1px solid green;
+}
+.roundImg {
+    border: 1px solid pink;
+}
+
+@media screen and (max-width: 720px) {
+    section div {
+        display: block;
+        /* padding: 20px 50px 10px 50px; */
+    }
 }
