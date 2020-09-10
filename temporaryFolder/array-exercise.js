@@ -10,13 +10,13 @@ console.log("result2", result2);
 //3. exercise
 function getLessThanZero(arr) {
     var resultArr = [];
-    for (var val in arr) {
-        if (val < 0) {
-            resultArr;
-            
-        // }
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < 0) {
+            resultArr.push(arr[i]);
+        }
     }
+    return resultArr;
 }
 
-var result3 = getLessThanZero([1, 2, -1, -90, 10]);
+var result3 = getLessThanZero([1, 2, -1, 0, 12]);
 console.log("result3", result3);
