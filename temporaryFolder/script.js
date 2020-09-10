@@ -1,21 +1,12 @@
-//1. exercise
-function addNums() {
-    var sum = 0;
-    for (var i = 0; i < arguments.length; i++) {
-        sum += arguments[i];
-    }
-    return sum;
-}
-// var fnReturn = addNums(5, 10, 15, 100, 200);
-// console.log(fnReturn);
+var person = {
+    name: "ariel",
+    address: {
+        "house number": 20,
+        street: "John Schehr",
+    },
+    pets: true,
+};
 
-//2. exercise
-function waitThenRun(
-    
-    setTimeout(waitThenRun(), 7500);
-    return;
-    ) {
-}
+person.address.work.city
 
-var result = waitThenRun();
-console.log("result: ", result);
+console.log(person.address["house number"]);
