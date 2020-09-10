@@ -44,7 +44,7 @@ section {
 
 .bgImg {
     width: 100%;
-    position: relative;
+    /* position: relative; */
     /* height: 400px; */
     margin: 0px 0px 0px 0px;
     object-fit: fill;
@@ -59,22 +59,26 @@ section {
 
 .welBtn {
     position: absolute;
+    /* position: relative; */
     top: 50%;
-    width: 100%
+    left: 50%;
+    /* width: 100%; */
     text-align: center;
+    /* transform: translateX(-50%); */
+    transform: translateX(-50%);
 }
 
 .welBtn p {
-    width: 100%;
-    text-align: center;
+    /* width: 100%; */
+    /* text-align: center; */
     color: white;
     font-size: 40px;
     padding: 15px;
 }
 
 .welBtn a {
-    width: 100%;
-    text-align: center;
+    /* width: 100%; */
+    /* text-align: center; */
     background-color: yellow;
     color: darkorange;
     border: 5px solid darkorange;
