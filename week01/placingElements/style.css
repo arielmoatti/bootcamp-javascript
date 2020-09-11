@@ -57,18 +57,15 @@ section {
     /* top: 50%; */
 }
 
-.welBtn {
+.banner {
     position: absolute;
-    /* position: relative; */
     top: 50%;
     left: 50%;
-    /* width: 100%; */
     text-align: center;
-    /* transform: translateX(-50%); */
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 }
 
-.welBtn p {
+.banner p {
     /* width: 100%; */
     /* text-align: center; */
     color: white;
@@ -76,7 +73,7 @@ section {
     padding: 15px;
 }
 
-.welBtn a {
+.banner a {
     /* width: 100%; */
     /* text-align: center; */
     background-color: yellow;
@@ -135,9 +132,11 @@ h2 {
     border: 1px solid pink;
 }
 
+/* make sure to treat the button
 @media screen and (max-width: 720px) {
     section div {
         display: block;
-        /* padding: 20px 50px 10px 50px; */
+
     }
 }
+*/
