@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    position: fixed;
+    left: 200px;
+    top: 20px;
+}
+
+#headStk {
+    width: 120px;
+    height: 120px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+#bodyStk {
+    height: 2px;
+    width: 300px;
+    background-color: #000;
+    position: absolute;
+    transform: rotate(90deg);
+    top: 269px;
+    left: -90px;
+}
+
+.arm {
+    height: 2px;
+    width: 200px;
+    background-color: black;
+    position: absolute;
+    top: 200px;
+    left: 60px;
+    transform: rotate(-30deg);
+    transform-origin: left;
+}
+
+.aLeft {
+    transform: rotate(240deg);
+    top: 0px;
+    left: 0px;
+}
+
+.leg {
+    height: 2px;
+    width: 200px;
+    background-color: black;
+    position: absolute;
+    top: -207px;
+    left: -308px;
+    transform: rotate(10deg);
+}
+.lLeft {
+    height: 2px;
+    width: 200px;
+    background-color: black;
+    position: absolute;
+    top: -283px;
+    left: -176px;
+    transform: rotate(290deg);
+}
