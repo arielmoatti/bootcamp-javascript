@@ -243,7 +243,7 @@ section p {
     }
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     header,
     section {
         background-color: #212121;
