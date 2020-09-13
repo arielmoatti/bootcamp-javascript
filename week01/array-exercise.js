@@ -28,11 +28,24 @@ each(["a", "b"], function (val, idx) {
 //2. exercise
 function revOrder(arr) {
     var revArr = arr;
+    console.log("passed array (untouched) is: ", arr);
     return revArr.reverse();
 }
 
-var result2 = revOrder([1, 2, 3, 4]);
-console.log("result2", result2);
+var reveredArray = revOrder([1, 2, 3, 4]);
+console.log("result 1 using 'reverse' method: ", reveredArray);
+
+//2. exercise another way
+function revOrder2(arr) {
+    var revArr = [];
+    for (var i = arr.length - 1; i >= 0; i--) {
+        revArr.push(arr[i]);
+    }
+    console.log("passed array (untouched) is: ", arr);
+    return revArr;
+}
+var reveredArray2 = revOrder2([1, 2, 3, 4]);
+console.log("result 2 using for loop: ", reveredArray2);
 
 //3. exercise
 function getLessThanZero(arr) {
