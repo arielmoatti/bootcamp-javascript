@@ -13,8 +13,7 @@ selectorStyleChange("h2");
 
 //2. exercise
 function classReturnArray(par) {
-    var storeArr = [];
-    storeArr = document.getElementsByClassName(par);
+    var storeArr = document.getElementsByClassName(par);
     return storeArr;
 }
 
