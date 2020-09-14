@@ -1,3 +1,4 @@
+// contructors and prototypes
 function ConsObject(firstName, surname) {
     this.name = firstName;
     this.lastName = surname;
@@ -17,3 +18,8 @@ var ananda = new ConsObject("Ananda", "Lopez");
 console.log("ananda", ananda);
 var rubi = new ConsObject("Rubi", "Rasus");
 console.log("rubi", rubi);
+
+// Document Object Model (DOM)
+
+document.location;
+document.body;
