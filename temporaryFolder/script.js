@@ -1,25 +1,27 @@
-// contructors and prototypes
-function ConsObject(firstName, surname) {
-    this.name = firstName;
-    this.lastName = surname;
-    this.address = function () {
-        console.log("not yet");
-    };
-}
+var button = document.getElementById("first");
+var pageBG = document.querySelector("body");
+var input = document.querySelector("input");
+var newDiv = document.getElementsByClassName("new-div")[0];
 
-ConsObject.prototype.newMethod = function () {
-    consolfe.log("enter number");
-};
-ConsObject.prototype.inBerlin = "no";
-var ariel = new ConsObject("Ariel", "Moatti");
-ariel.address();
-console.log("ariel", ariel);
-var ananda = new ConsObject("Ananda", "Lopez");
-console.log("ananda", ananda);
-var rubi = new ConsObject("Rubi", "Rasus");
-console.log("rubi", rubi);
+button.addEventListener("click", function (event) {
+    console.log("event", event);
+    pageBG.style.backgroundColor = "blue";
+    // console.log("it was clicked!");
+});
 
-// Document Object Model (DOM)
+document.addEventListener("keydown", function (event) {
+    if (event.keyCode === 80) {
+        console.log("event", event);
+        pageBG.style.backgroundColor = "red";
+    }
+});
 
-document.location;
-document.body;
+input.addEventListener("input", function (event) {
+    console.log("input is happening");
+    input.style.color = "red";
+    event.target.style.backgroundColor = "yellow";
+});
+
+newDiv.addEventListener("click", function (event) {
+    event.target.style.backgroundColor = "green";
+});
