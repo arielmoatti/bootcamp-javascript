@@ -1,19 +1,19 @@
 var headlineBox = document.getElementById("headlines");
 var left = headlineBox.offsetLeft;
 var links = document.getElementsByTagName("a");
-var animReq = requestAnimationFrame(moveTickers);
+// var animReq = requestAnimationFrame(moveTickers);
 
 function moveTickers() {
-    left = left - 1.5;
+    left = left - 2;
     // left--;
     headlineBox.style.left = left + "px";
     if (left <= -links[0].offsetWidth) {
         left += links[0].offsetWidth;
         headlineBox.appendChild(links[0]);
     }
-    requestAnimationFrame(moveTickers);
+    animReq = requestAnimationFrame(moveTickers);
 
-    animReq++;
+    // animReq++;
     console.log("animReq", animReq);
 }
 moveTickers();
