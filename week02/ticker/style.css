@@ -13,7 +13,14 @@ body {
     padding-top: 0.5em;
     border-bottom: 2px solid black;
 }
+
 #headlines {
+    position: absolute;
+    left: 100%;
+    white-space: nowrap;
+}
+#headlinesBottom {
+    visibility: hidden;
     position: absolute;
     left: 100%;
     white-space: nowrap;
