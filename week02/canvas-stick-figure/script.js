@@ -9,6 +9,8 @@
 
     var x = 200;
     var y = 350;
+    var initX = x;
+    var initY = y;
 
     function drawStickfigure() {
         // ---------HEAD----------
@@ -46,35 +48,57 @@
     function arrowKeys(event) {
         switch (event.key) {
             case "ArrowUp":
-                ctx2.clearRect(0, 0, 800, 800);
-                y = y - 10;
-                ctx2.drawImage(stickF, x, y);
-                break;
-            // console.log("x=", x, "y=", y);
+                if (y > -20) {
+                    //as long as it has not reach the edge
+                    ctx2.clearRect(0, 0, 800, 800);
+                    y = y - 10;
+                    ctx2.drawImage(stickF, x, y);
+                    console.log("x=", x, "y=", y);
+                    break;
+                } else {
+                    /// reach the edge - break
+                    break;
+                }
             // console.log("up arrow!");
             case "ArrowDown":
-                ctx2.clearRect(0, 0, 800, 800);
-                y = y + 10;
-                ctx2.drawImage(stickF, x, y);
-                break;
+                if (y < 350) {
+                    ctx2.clearRect(0, 0, 800, 800);
+                    y = y + 10;
+                    ctx2.drawImage(stickF, x, y);
+                    console.log("x=", x, "y=", y);
+                    break;
+                } else {
+                    break;
+                }
             case "ArrowLeft":
-                ctx2.clearRect(0, 0, 800, 800);
-                x = x - 10;
-                ctx2.drawImage(stickF, x, y);
-                break;
+                if (x > -40) {
+                    ctx2.clearRect(0, 0, 800, 800);
+                    x = x - 10;
+                    ctx2.drawImage(stickF, x, y);
+                    console.log("x=", x, "y=", y);
+                    break;
+                } else {
+                    break;
+                }
+
             case "ArrowRight":
-                ctx2.clearRect(0, 0, 800, 800);
-                x = x + 10;
-                ctx2.drawImage(stickF, x, y);
-                break;
+                if (x < 440) {
+                    ctx2.clearRect(0, 0, 800, 800);
+                    x = x + 10;
+                    ctx2.drawImage(stickF, x, y);
+                    console.log("x=", x, "y=", y);
+                    break;
+                } else {
+                    break;
+                }
         }
     }
 
     document.body.addEventListener("keydown", arrowKeys);
     reset.addEventListener("click", function () {
         ctx2.clearRect(0, 0, 800, 800);
-        x = 200;
-        y = 350;
+        x = initX;
+        y = initY;
         ctx2.drawImage(stickF, x, y);
     });
 })();
