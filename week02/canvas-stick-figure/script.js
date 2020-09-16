@@ -1,36 +1,59 @@
 (function () {
     // grab our canvas and render the context
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d"); //sets the context to 2d
+    var stickF = document.getElementById("canvas");
+    var ctx = stickF.getContext("2d"); //sets the context to 2d
     var canAnim = document.getElementById("canvasAnim");
-    console.log("canAnim", canAnim);
+    var ctx2 = canAnim.getContext("2d"); //sets the context to 2d
 
-    // ---------HEAD----------
-    ctx.beginPath();
-    ctx.strokeStyle = "green";
-    ctx.lineWidth = 3;
-    ctx.arc(100, 50, 30, 0, 2 * Math.PI);
-    ctx.stroke();
+    function drawStickfigure() {
+        // ---------HEAD----------
+        ctx.beginPath();
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 3;
+        ctx.arc(100, 50, 30, 0, 2 * Math.PI);
+        ctx.stroke();
 
-    // ---------BODY----------
-    ctx.beginPath();
-    ctx.moveTo(100, 80);
-    ctx.lineTo(100, 180);
-    ctx.stroke();
+        // ---------BODY----------
+        ctx.beginPath();
+        ctx.moveTo(100, 80);
+        ctx.lineTo(100, 180);
+        ctx.stroke();
 
-    // ---------UPPER LIMBS----------
-    ctx.beginPath();
-    ctx.moveTo(160, 50); //up right
-    ctx.lineTo(100, 100); //down to body
-    ctx.lineTo(40, 50); //up left
-    ctx.stroke();
+        // ---------UPPER LIMBS----------
+        ctx.beginPath();
+        ctx.moveTo(160, 50); //up right
+        ctx.lineTo(100, 100); //down to body
+        ctx.lineTo(40, 50); //up left
+        ctx.stroke();
 
-    // ---------LOWER LIMBS----------
-    ctx.beginPath();
-    ctx.moveTo(160, 250); //down right
-    ctx.lineTo(100, 180); //up to body
-    ctx.lineTo(40, 250); // down to left
-    ctx.stroke();
+        // ---------LOWER LIMBS----------
+        ctx.beginPath();
+        ctx.moveTo(160, 250); //down right
+        ctx.lineTo(100, 180); //up to body
+        ctx.lineTo(40, 250); // down to left
+        ctx.stroke();
+    }
+
+    drawStickfigure(); //executes the stick figure
+
+    ctx2.drawImage(stickF, 200, 350); //initial position
+    // ctx2.drawImage(stickF, 300, 250); //initial position
+
+    function arrowKeys(event) {
+        var x,
+            y = 0;
+        switch (event.key) {
+            case "ArrowUp":
+                ctx2.clearRect(0, 0, 800, 800);
+                x = 50;
+                y = 250;
+                ctx2.drawImage(stickF, x, y);
+                console.log("x=", x, "y=", y);
+                console.log("up arrow!");
+        }
+    }
+
+    document.body.addEventListener("keydown", arrowKeys);
 
     /*
     // begin our path

@@ -7,14 +7,14 @@
     position: absolute;
     top: 50px;
     left: 50px;
-    background-color: whitesmoke;
-    border: 3px solid black;
+    background-color: transparent;
+    /* border: 3px solid black; */
 }
 
 #canvasAnim {
     position: absolute;
     top: 50px;
-    left: 750px;
+    left: 50px;
     background-color: whitesmoke;
     border: 3px solid black;
 }

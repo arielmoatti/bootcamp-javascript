@@ -7,6 +7,69 @@ body {
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+.overlay {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* transition: 1s ease-in-out; */
+    filter: brightness(10%);
+}
+
+.side-nav {
+    
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 80%;
+    z-index: 10;
+    height: 100%;
+    width: 20%;
+    padding-top: 40px;
+    padding-left: 15px;
+    background-color: whitesmoke;
+    /* transition-property: transform;
+    transition-duration: 1s;
+    transform: translateX(80%) */
+    /* transition: 1.5s ease-in-out; */
+}
+
+.visibOn {
+    visibility: visible;
+    /* transition: 1s ease-in-out; */
+
+}
+
+.navItem.xBtn {
+    color: grey;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    position: absolute;
+    top: -10%;
+    left: 70%;
+    padding-bottom: 30px; */
+}
+.navLinks {
+    position: relative;
+}
+
+.navItem {
+    display: block;
+    color: #143eff;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.logout {
+    font-size: 11px;
+    padding-top: 50px;
+}
+
 header {
     background-color: white;
     padding: 10px 10px 32px 10px;
@@ -156,6 +219,17 @@ section p {
         padding-bottom: 22px;
     }
 
+    .side-nav {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 10;
+    height: 100%;
+    width: 50%;
+    padding-top: 40px;
+    padding-left: 15px;
+    }
+
     #logo {
         height: 17px;
     }
@@ -195,11 +269,19 @@ section p {
 
 @media screen and (max-width: 365px) {
     body {
-        min-width: 175px;
+        min-width: 250px;
     }
     main {
         height: 215px;
     }
+    .navItem {
+    padding: 5px;
+    font-size: 15px;
+    }
+
+    .logout {
+    font-size: 10px;
+    padding-top: 30px;
 
     .bgImg {
         height: auto;
