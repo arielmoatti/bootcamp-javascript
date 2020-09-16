@@ -4,6 +4,11 @@
     var ctx = stickF.getContext("2d"); //sets the context to 2d
     var canAnim = document.getElementById("canvasAnim");
     var ctx2 = canAnim.getContext("2d"); //sets the context to 2d
+    var reset = document.getElementById("resetBtn");
+    console.log("reset", reset);
+
+    var x = 200;
+    var y = 350;
 
     function drawStickfigure() {
         // ---------HEAD----------
@@ -36,64 +41,40 @@
 
     drawStickfigure(); //executes the stick figure
 
-    ctx2.drawImage(stickF, 200, 350); //initial position
-    // ctx2.drawImage(stickF, 300, 250); //initial position
+    ctx2.drawImage(stickF, x, y); //set initial position based on var x and y
 
     function arrowKeys(event) {
-        var x,
-            y = 0;
         switch (event.key) {
             case "ArrowUp":
                 ctx2.clearRect(0, 0, 800, 800);
-                x = 50;
-                y = 250;
+                y = y - 10;
                 ctx2.drawImage(stickF, x, y);
-                console.log("x=", x, "y=", y);
-                console.log("up arrow!");
+                break;
+            // console.log("x=", x, "y=", y);
+            // console.log("up arrow!");
+            case "ArrowDown":
+                ctx2.clearRect(0, 0, 800, 800);
+                y = y + 10;
+                ctx2.drawImage(stickF, x, y);
+                break;
+            case "ArrowLeft":
+                ctx2.clearRect(0, 0, 800, 800);
+                x = x - 10;
+                ctx2.drawImage(stickF, x, y);
+                break;
+            case "ArrowRight":
+                ctx2.clearRect(0, 0, 800, 800);
+                x = x + 10;
+                ctx2.drawImage(stickF, x, y);
+                break;
         }
     }
 
     document.body.addEventListener("keydown", arrowKeys);
-
-    /*
-    // begin our path
-    ctx.beginPath();
-    ctx.strokeStyle = "orange"; //styling the color
-    ctx.lineWidth = 10; //no need to set "px"
-
-    // moving it around
-    ctx.moveTo(100, 100); //setting X and Y
-
-    //map the drawing point (shape)
-    ctx.lineTo(500, 100); //leaves an invisible trail
-    ctx.lineTo(300, 400);
-    ctx.lineTo(100, 100);
-    ctx.closePath(); //makes sure the edges are closed
-
-    //drawing the line
-    ctx.stroke();
-
-    //fill the shape with color
-    ctx.fillStyle = "darkgreen";
-    ctx.fill(); //will execute it
-
-    ///drawing a circle
-    ctx.strokeStyle = "blue";
-    ctx.lineWidth = 5;
-    ctx.beginPath();
-    ctx.arc(200, 200, 50, 0, 2 * Math.PI);
-    //arc takes 5 arguments (and the 6th for clockwise)
-    //arc (x, y, radius, startingAngle, endAngle)
-    ctx.stroke();
-    ctx.fillStyle = "red";
-    ctx.fill();
-    //
-    //
-    //drawImage method
-    //two canvases - the second draws the first in different position
-    //<canvas></canvas>
-    //<canvas></canvas>
-    //and then hide the 1st one in css
-    //
-    */
+    reset.addEventListener("click", function () {
+        ctx2.clearRect(0, 0, 800, 800);
+        x = 200;
+        y = 350;
+        ctx2.drawImage(stickF, x, y);
+    });
 })();

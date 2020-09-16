@@ -4,10 +4,12 @@
 }
 
 #canvas {
+    /* visibility: hidden; */
+    display: none;
     position: absolute;
     top: 50px;
     left: 50px;
-    background-color: transparent;
+    /* background-color: transparent; */
     /* border: 3px solid black; */
 }
 
@@ -15,6 +17,14 @@
     position: absolute;
     top: 50px;
     left: 50px;
-    background-color: whitesmoke;
+    background-color: transparent;
     border: 3px solid black;
+}
+
+button {
+    /* z-index: 10; */
+    position: absolute;
+    left: 280px;
+    top: 55px;
+    /* transform: translateX(-50%); */
 }
