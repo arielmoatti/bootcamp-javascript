@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+.outer {
+    width: 200px;
+    height: 200px;
+    margin: 2px;
+    display: flex;
+}
+
+.inner {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
+.o1 {
+    background-color: gray;
+    justify-content: flex-end;
+}
+.o2 {
+    background-color: black;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+}
+.o3 {
+    background-color: blue;
+    align-items: flex-end;
+}
+.o4 {
+    background-color: purple;
+}
+
+.i1 {
+    background-color: orange;
+}
+.i2 {
+    background-color: yellow;
+}
+.i3 {
+    background-color: green;
+}
+.i4 {
+    background-color: pink;
+}
