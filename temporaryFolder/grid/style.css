@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-rows: 100px 1fr 100px;
+    gap: 10px;
+}
+
+header {
+    background-color: skyblue;
+    grid-column: 1 / 4;
+}
+
+footer {
+    background-color: skyblue;
+    grid-column: 1 / -1;
+}
+
+.left-sidebar,
+.right-sidebar {
+    background-color: violet;
+}
+
+main {
+    background-color: peachpuff;
+}
