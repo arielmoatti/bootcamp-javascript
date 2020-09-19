@@ -30,31 +30,43 @@ body {
 
 .kitty-container img.onscreen {
     transform: translateX(0);
-    transition: transform 3s;
+    transition: transform 1.5s ease-in-out;
 }
 
 .kitty-container img.offscreen-left {
     transform: translateX(-100%);
-    transition: transform 3s;
+    transition: transform 1.5s ease-in-out;
 }
 
-#dots {
+.dots {
     position: absolute;
     bottom: 30px;
     display: flex;
     justify-content: center;
     align-content: center;
     width: 100%;
+    opacity: 1;
+    cursor: pointer;
+    /* transition: opacity 0.5s ease-in-out; */
 }
 
 .dot {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    border: 3px solid white;
+    border: 2px solid white;
     margin: 0 12px;
 }
 
 .on {
     background-color: white;
+}
+
+.dotOff {
+    /* border: 3px solid rgba(255, 255, 255, 0.2); */
+    opacity: 0.1;
+}
+
+.cursorNot {
+    cursor: not-allowed;
 }
