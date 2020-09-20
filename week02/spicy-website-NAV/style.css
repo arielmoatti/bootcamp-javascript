@@ -15,33 +15,20 @@ body {
     z-index: 9;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    /* transition: 1s ease-in-out; */
-    filter: brightness(10%);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .side-nav {
-    
-    visibility: hidden;
     position: absolute;
     top: 0;
-    left: 80%;
+    left: 100%;
     z-index: 10;
     height: 100%;
     width: 20%;
     padding-top: 40px;
     padding-left: 15px;
     background-color: whitesmoke;
-    /* transition-property: transform;
-    transition-duration: 1s;
-    transform: translateX(80%) */
-    /* transition: 1.5s ease-in-out; */
-}
-
-.visibOn {
-    visibility: visible;
-    /* transition: 1s ease-in-out; */
-
+    transition: 0.5s ease-in-out;
 }
 
 .navItem.xBtn {
@@ -49,10 +36,11 @@ body {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     position: absolute;
-    top: -10%;
-    left: 70%;
-    padding-bottom: 30px; */
+    top: -17%;
+    left: 83%;
+    padding-bottom: 30px;
 }
+
 .navLinks {
     position: relative;
 }
@@ -70,6 +58,16 @@ body {
     padding-top: 50px;
 }
 
+.overlayOn {
+    visibility: visible;
+    transition: 2s;
+}
+
+.sideNavTrans {
+    transition-property: transform;
+    transition-duration: 0.5s ease-in-out;
+    transform: translateX(-100%);
+}
 header {
     background-color: white;
     padding: 10px 10px 32px 10px;
@@ -220,14 +218,14 @@ section p {
     }
 
     .side-nav {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    z-index: 10;
-    height: 100%;
-    width: 50%;
-    padding-top: 40px;
-    padding-left: 15px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 10;
+        height: 100%;
+        width: 50%;
+        padding-top: 40px;
+        padding-left: 15px;
     }
 
     #logo {
@@ -275,13 +273,14 @@ section p {
         height: 215px;
     }
     .navItem {
-    padding: 5px;
-    font-size: 15px;
+        padding: 5px;
+        font-size: 15px;
     }
 
     .logout {
-    font-size: 10px;
-    padding-top: 30px;
+        font-size: 10px;
+        padding-top: 30px;
+    }
 
     .bgImg {
         height: auto;
