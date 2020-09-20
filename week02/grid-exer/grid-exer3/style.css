@@ -1,6 +1,38 @@
-* {
-    margin: 0;
-}
 body {
     display: grid;
+    grid-template: 200px / 200px 200px 200px 200px;
+    gap: 5px;
+}
+
+.outer {
+    display: grid;
+    grid-template: 100px 100px / 100px 100px;
+}
+
+.o1 {
+    background-color: gray;
+}
+.o2 {
+    background-color: black;
+}
+.o3 {
+    background-color: blue;
+}
+.o4 {
+    background-color: purple;
+}
+.i1 {
+    background-color: orange;
+    grid-column-start: 2;
+}
+.i2 {
+    background-color: yellow;
+    grid-area: 2 / 2;
+}
+.i3 {
+    background-color: green;
+    grid-row-start: 2;
+}
+.i4 {
+    background-color: pink;
 }
