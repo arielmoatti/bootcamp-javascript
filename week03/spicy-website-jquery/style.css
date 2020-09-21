@@ -19,7 +19,7 @@ body {
 }
 
 .side-nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 100%;
     z-index: 10;
@@ -218,9 +218,9 @@ section p {
     }
 
     .side-nav {
-        position: absolute;
+        position: fixed;
         top: 0;
-        left: 50%;
+        left: 100%;
         z-index: 10;
         height: 100%;
         width: 50%;
