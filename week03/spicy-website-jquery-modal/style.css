@@ -5,6 +5,44 @@
 
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
+    /* height: 500px;
+    position: relative; */
+}
+
+.modal {
+    background-color: white;
+    padding: 30px 25px;
+    border-radius: 7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    transform: translate(-50%, -50%);
+    z-index: 12;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+h1.modalItem {
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+p.modalItem {
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+.modalX {
+    color: grey;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    position: absolute;
+    top: 0%;
+    left: 95%;
+    padding-bottom: 30px;
 }
 
 .overlay {
@@ -16,6 +54,8 @@ body {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 1000ms;
 }
 
 .side-nav {
@@ -28,7 +68,7 @@ body {
     padding-top: 40px;
     padding-left: 15px;
     background-color: whitesmoke;
-    transition: 0.5s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 .navItem.xBtn {
@@ -60,12 +100,13 @@ body {
 
 .overlayOn {
     visibility: visible;
-    transition: 2s;
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 .sideNavTrans {
-    transition-property: transform;
-    transition-duration: 0.5s ease-in-out;
+    /* transition-property: transform;
+    transition-duration: 0.5s ease-in-out; */
     transform: translateX(-100%);
 }
 header {
@@ -216,7 +257,9 @@ section p {
     header {
         padding-bottom: 22px;
     }
-
+    .modal {
+        width: 300px;
+    }
     .side-nav {
         position: fixed;
         top: 0;
@@ -268,6 +311,14 @@ section p {
 @media screen and (max-width: 365px) {
     body {
         min-width: 250px;
+    }
+    .modal {
+        width: 200px;
+        top: 200px;
+    }
+
+    .modalX {
+        left: 90%;
     }
     main {
         height: 215px;
