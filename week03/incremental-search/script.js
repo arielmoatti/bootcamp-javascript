@@ -1,11 +1,10 @@
 (function (countries) {
     var searchField = $('input[name="search"]');
     var resultsDiv = $(".results");
-    var iKey = 0;
+    var reset = $("button");
+    var idx = 0; //cannot use it correctly
 
     searchField.on("input", function (e) {
-        // e.target
-        //e.currentTarget
         var results = [];
         var userInput = searchField.val().toLowerCase();
         for (var i = 0; i < countries.length; i++) {
@@ -14,11 +13,10 @@
                 // results.splice(1, results.length);
                 // searchField.attr("placeholder", "no results!");
             }
-
             //handles an empty search field (e.g. backspace)
             if (!searchField.val()) {
-                results = []; //resets the search results
-                // results.length = 0; //other options
+                // results = []; //resets the search results
+                results.length = 0; //other options
                 // results.splice(0, results.length); //other options
             }
             //shows only 4 results
@@ -46,50 +44,63 @@
         resultsDiv.show();
     });
 
-    function highlightFn(e) {
-        $(e.target).toggleClass("highlight");
-    }
-
-    function inputVal(e) {
-        searchField.val($(e.target).text());
-    }
-    resultsDiv.on("mouseover", ".country", highlightFn);
-    resultsDiv.on("mouseleave", ".country", highlightFn);
-    resultsDiv.on("mousedown", ".country", inputVal);
-    searchField.keydown(function (e) {
-        if (e.which === 40) {
-            console.log("i before", iKey);
-            if (iKey < 3) {
-                console.log("iKey after", iKey);
-                $("p").eq(iKey).addClass("highlight");
-                iKey++;
-                $("p").eq(iKey).removeClass("highlight");
-            } else {
-                iKey = 0;
-            }
-            console.log("iKey increment", iKey);
-            console.log("down");
+    resultsDiv.on("mouseover", ".country", function (e) {
+        if ($(".country").hasClass("highlight")) {
+            $(".country").removeClass("highlight");
         }
-        // highlightFn();
+        $(e.target).addClass("highlight");
     });
-    // resultsDiv.on("mousedown", ".country", function (e) {
-    //     searchField.val($(e.target).text());
-    // });
 
-    //add eventlisterer to the <p> tags to highlight them - with delegation:
-    //.....on("click", ".country", function(){})
-    // use .next() and .prev() (jquery) for the down and up arrow keys
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    resultsDiv.mouseleave(".country", function () {
+        $(".country").removeClass("highlight");
+    });
+
+    resultsDiv.on("mousedown", ".country", function (e) {
+        searchField.val($(e.target).text());
+    });
+
+    /*reset.click(function () {
+        searchField.val("");
+        // still doesn't clear the array
+    });*/
+
+    searchField.keydown(function (e) {
+        var currHL = $(".highlight"); //declares the higlighted
+        var countryClass = $(".country"); //declares the actual P tag
+
+        switch (e.which) {
+            case 40: //down
+                console.log("down key", e.which);
+                if (currHL.length === 0) {
+                    //checks status of highlighted
+                    countryClass.first().addClass("highlight"); //adds to first
+                } else if (!countryClass.last().hasClass("highlight")) {
+                    //checks if NOT reach last
+                    currHL.next().addClass("highlight"); //adds to next
+                    currHL.removeClass("highlight"); //removes from current
+                }
+                break; //to exit the switch
+
+            case 38: //up
+                console.log("up key", e.which);
+                if (currHL.length === 0) {
+                    countryClass.first().addClass("highlight");
+                } else if (!countryClass.first().hasClass("highlight")) {
+                    currHL.prev().addClass("highlight");
+                    currHL.removeClass("highlight");
+                }
+                break;
+            case 13: //enter
+                console.log("enter key", e.which);
+                if (currHL.length !== 0) {
+                    //only selects highlighted result
+                    // searchField.val($(e.target).text());
+                    // searchField.val(countryClass.eq().text()); //cannot find solution
+                    console.log("text added");
+                }
+                break;
+        }
+    });
 })([
     "Afghanistan",
     "Albania",

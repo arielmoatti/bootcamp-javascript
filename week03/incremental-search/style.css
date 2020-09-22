@@ -39,3 +39,7 @@ p.country {
     font-family: "Courier New", Courier, monospace;
     color: grey;
 }
+
+button {
+    cursor: not-allowed;
+}
