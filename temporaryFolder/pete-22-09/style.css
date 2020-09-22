@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    position: relative;
+    height: 60vh;
+}
+
+.container {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    /* transform: translateX(-50%); */
+}
+h1 {
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+p.country {
+    font-family: "Courier New", Courier, monospace;
+    padding: 5px;
+    cursor: pointer;
+}
+.results {
+    padding-top: 20px;
+}
+
+.highlight {
+    color: whitesmoke;
+    background-color: darkslategray;
+}
+
+.noResults {
+    font-family: "Courier New", Courier, monospace;
+    color: grey;
+}
