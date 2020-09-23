@@ -5,13 +5,13 @@
     var idx = 0; //cannot use it correctly
 
     searchField.on("input", function (e) {
-        var results = [];
-        var userInput = searchField.val().toLowerCase();
+        resultsDiv.show(); //important after hiding with "enter" key
+        var results = []; //starts an empty array
+        var userInput = searchField.val().toLowerCase(); //turns all user input to lowervase
         for (var i = 0; i < countries.length; i++) {
+            //loops through the function's argument of countries and lowercases them
             if (countries[i].toLowerCase().indexOf(userInput) === 0) {
                 results.push(countries[i]);
-                // results.splice(1, results.length);
-                // searchField.attr("placeholder", "no results!");
             }
             //handles an empty search field (e.g. backspace)
             if (!searchField.val()) {
@@ -32,7 +32,7 @@
         resultsDiv.html(htmlForCountries);
         //checks if there are no results (like numbers) AND the field is empty
         if (results.length === 0 && searchField.val().length != 0) {
-            resultsDiv.html("<p class='noResults'>No results found...</p>");
+            resultsDiv.html("<p class='noResults'>No results found...</p>"); //creates a unique <p> to avoid mess-up
         }
     });
 
@@ -59,10 +59,9 @@
         searchField.val($(e.target).text());
     });
 
-    /*reset.click(function () {
-        searchField.val("");
-        // still doesn't clear the array
-    });*/
+    reset.click(function () {
+        searchField.val($("").text());
+    });
 
     searchField.keydown(function (e) {
         var currHL = $(".highlight"); //declares the higlighted
@@ -90,13 +89,13 @@
                     currHL.removeClass("highlight");
                 }
                 break;
+
             case 13: //enter
                 console.log("enter key", e.which);
+                //only selects highlighted result
                 if (currHL.length !== 0) {
-                    //only selects highlighted result
-                    // searchField.val($(e.target).text());
-                    // searchField.val(countryClass.eq().text()); //cannot find solution
-                    console.log("text added");
+                    searchField.val($(".highlight").text());
+                    resultsDiv.hide(); //hides the other results
                 }
                 break;
         }
