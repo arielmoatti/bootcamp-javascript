@@ -1,5 +1,7 @@
 function translateNumberToGerman() {
     try {
+        // $(".refresh").removeClass("on");
+        // $(".resultDiv").empty().html();
         var numToTrans = askForNumber();
         console.log("numToTrans", numToTrans);
         var germanNums = [
@@ -25,7 +27,12 @@ function translateNumberToGerman() {
 }
 
 $(".refresh").click(function () {
-    location.reload();
+    $(".refresh").removeClass("on");
+    $(".resultDiv").empty().html();
+    setTimeout(function () {
+        translateNumberToGerman();
+    }, 300);
+    // location.reload();
 });
 
 function askForNumber() {
