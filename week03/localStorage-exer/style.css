@@ -6,9 +6,27 @@
 body {
     display: flex;
     justify-content: center;
-    width: 100vw;
+    /* width: 80vw; */
+    /* height: 80vh; */
+    /*
+    background: url("https://abovethelaw.com/uploads/2016/01/time-in-bottle-message-in-bottle-on-beach.jpg");
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    */
+    /* filter: blur(8px); */
+    /* background-size: stretch; */
 }
 
+img {
+    /* position: absolute; */
+    /* display: flex; */
+    z-index: -2;
+    max-width: 1000px;
+    height: auto;
+    width: 100vw;
+    filter: blur(2px);
+    opacity: 0.8;
+}
 .container {
     position: absolute;
     display: flex;
@@ -19,10 +37,12 @@ body {
 }
 
 button {
-    margin: 20px;
+    margin-top: 20px;
 }
 
 textarea {
     font-size: 20px;
     resize: none;
+    background-color: transparent;
+    color: black;
 }
