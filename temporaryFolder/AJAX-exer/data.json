@@ -1,0 +1,14 @@
+[
+    {
+        "animal": "cat",
+        "cutenessScore": 10
+    },
+    {
+        "animal": "squirrel",
+        "cutenessScore": 8
+    },
+    {
+        "animal": "otter",
+        "cutenessScore": 4
+    }
+]
