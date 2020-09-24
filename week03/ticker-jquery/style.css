@@ -26,7 +26,7 @@ body {
     white-space: nowrap;
 }
 
-#headlines a {
+a {
     font-size: 20px;
     color: black;
     text-decoration: none;
@@ -38,4 +38,9 @@ body {
 p {
     padding: 5em;
     /* visibility: hidden; */
+}
+
+.hovering {
+    color: blue;
+    text-decoration: underline;
 }

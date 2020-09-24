@@ -1,16 +1,12 @@
-// var headlineBox = document.getElementById("headlines");
 console.log("is jquery linked?", $);
+// var headlineBox = document.getElementById("headlines");
 var headlineBox = $("#headlines"); //-----JQUERY
 // var left = headlineBox.offsetLeft;
 var left = headlineBox.offset().left; //-----JQUERY
 
-//don't use this below. Find the places and traverse them
-// var links = document.getElementsByTagName("a");
-var links = $("a");
-// var links = $.makeArray($("a"));
-// console.log("links", links);
+// var links = document.getElementsByTagName("a"); //old vanilla
 
-//outerWidth() instead of offset
+//outerWidth() instead of offset --- jquery
 //css with eq().css({})....
 
 var animReq;
@@ -23,10 +19,10 @@ function moveTickers() {
         //-----JQUERY
         left: left + "px", //-----JQUERY
     });
-    if (left <= -links(0).outerWidth()) {
-        left += links(0).outerWidth();
+    if (left <= -$("a").eq(0).outerWidth()) {
+        left += $("a").eq(0).outerWidth();
         // headlineBox.appendChild(links[0]);
-        headlineBox.append(links(0)); //-----JQUERY
+        $("a").eq(0).appendTo(headlineBox); //-----JQUERY
     }
     animReq = requestAnimationFrame(moveTickers);
 
@@ -36,26 +32,35 @@ function moveTickers() {
 moveTickers();
 
 //-----JQUERY
-function mouseOver(event) {
-    event.target.css({
+$("a").on("mouseenter", function (e) {
+    cancelAnimationFrame(animReq);
+    $(e.target).addClass("hovering");
+    /*$(e.target).css({
         color: "blue",
         "text-decoration": "underline",
-    });
+    }); */
+});
 
-    // event.target.style.color = "blue";
-    // event.target.style.textDecoration = "underline";
-    cancelAnimationFrame(animReq);
-}
+$("a").on("mouseleave", function () {
+    requestAnimationFrame(moveTickers);
+    // cancelAnimationFrame(animReq);
+    $(".hovering").removeClass("hovering");
+    // style = "window.getComputedStyle(links[0])";
+});
 
-function mouseOut(event) {
-    event.target.style = "window.getComputedStyle(links[0])";
-    moveTickers();
-}
+// function mouseOver(event) {
 
-for (var i = 0; i < links.length; i++) {
-    // links[i].addEventListener("mouseenter", mouseOver);
-    //-----JQUERY
-    links(i).mouseenter(mouseOver);
+// event.target.style.color = "blue";
+// event.target.style.textDecoration = "underline";
+// }
 
-    // links[i].addEventListener("mouseleave", mouseOut);
-}
+// function mouseOut(event) {
+//     event.target.style = "window.getComputedStyle(links[0])";
+//     moveTickers();
+// }
+
+// for (var i = 0; i < links.length; i++) {
+// links[i].addEventListener("mouseenter", mouseOver);
+// links(i).mouseenter(mouseOver);
+
+// links[i].addEventListener("mouseleave", mouseOut);
