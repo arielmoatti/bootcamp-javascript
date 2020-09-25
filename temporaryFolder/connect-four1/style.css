@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    font-family: "Share Tech Mono", monospace;
+}
+
+body {
+    background-color: wheat;
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+header > p {
+    color: darkolivegreen;
+    font-size: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.winnerModal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategray;
+    z-index: 10;
+    border-radius: 10px;
+    border: 1px solid black;
+    filter: drop-shadow(5px 5px 3px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 150px;
+    opacity: 0;
+    visibility: hidden;
+}
+.winnerModal p {
+    font-size: 40px;
+    text-align: center;
+    color: lightskyblue;
+}
+.nextRound {
+    /* align-self: center; */
+    margin-top: 15px;
+    cursor: pointer;
+    z-index: 11;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    /* text-align: center; */
+    /* vertical-align: middle; */
+}
+#board {
+    display: flex;
+}
+
+.slot {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.hole {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 40px solid blue;
+    transform: translate(-30px, -30px);
+}
+
+.player1 {
+    background-color: red;
+}
+
+.player2 {
+    background-color: yellow;
+}
+
+.modalOn {
+    visibility: visible;
+    opacity: 0.9;
+    transition-property: opacity;
+    transition-duration: 1000ms;
+    /* transition-delay: 700ms; */
+}
