@@ -1,19 +1,29 @@
 (function () {
+    //variable declarations
     var currentPlayer = "player1";
     var modal = $(".winnerModal");
     var checkersPlayer1 = [];
     var checkersPlayer2 = [];
+    var fullColumn = []; //to check for tied
+    var tieArr = [1, 1, 1, 1, 1, 1, 1]; //result when tied, to compare
 
+    //actiave game
+    gameFn();
+
+    //alternate turns
     function switchPlayer() {
         currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
     }
 
-    gameFn();
-
+    //main game function
     function gameFn() {
         $(".column").click(function (e) {
             var col = $(e.currentTarget);
+            var allColumns = $(".column");
+            // console.log("allColumns", allColumns);
             var slotsInCol = col.children();
+            var columnIdx = col.index();
+            // console.log("columnIdx", columnIdx);
             // console.log("clicked on column");
             // console.log("slotsInCol", slotsInCol);
 
@@ -26,27 +36,45 @@
                     break;
                 }
             }
+            //creating array for full culomns, to later compare to TIE
+            for (var j = 0; j < allColumns.length; j++) {
+                if (i === 0 && j === allColumns.length - 1) {
+                    fullColumn.push(1);
+                }
+            }
+            // checking TIED situation (column array equals tie array)
+            if (
+                fullColumn.length === tieArr.length &&
+                fullColumn.every((val, index) => val === tieArr[index])
+            ) {
+                $(".column").off();
+                modalFn("tied"); //passing tied string to the modal
+            }
+
             if (i === -1) {
+                // this checks if col is full...
+                // console.log("i", i);
                 return;
             }
 
             // console.log("col", col.index(), "row", i);
-            var columnIdx = col.index();
             var slotsInRow = $(".row" + i);
             // console.log("slotsInRow", slotsInRow);
             if (checkForVictory(slotsInCol)) {
-                // victory dance
+                //check columns
                 console.log("column victory for", currentPlayer);
                 $(".column").off();
                 modalFn(currentPlayer);
             } else if (checkForVictory(slotsInRow)) {
+                //check rows
                 console.log("row victory for", currentPlayer);
                 $(".column").off();
                 modalFn(currentPlayer);
             } else if (checkDiagBLTR(columnIdx, i)) {
+                //check diag
+                console.log("diag victory for", currentPlayer);
                 $(".column").off();
                 modalFn(currentPlayer);
-                console.log("diag victory for", currentPlayer);
             }
 
             switchPlayer();
@@ -66,8 +94,8 @@
         } else {
             checkersPlayer2.push([locationArr[0], locationArr[1]]);
         }
-        console.log("checkersPlayer1", checkersPlayer1);
-        console.log("checkersPlayer2", checkersPlayer2);
+        // console.log("checkersPlayer1", checkersPlayer1);
+        // console.log("checkersPlayer2", checkersPlayer2);
 
         /*    
         var count = 0;
@@ -88,6 +116,7 @@
     function checkForVictory(slots) {
         // console.log("about to check", slots);
         // loop over some slots and check if there a 4 in a row
+
         var count = 0;
         for (var i = 0; i < slots.length; i++) {
             var slot = $(slots[i]);
@@ -95,11 +124,12 @@
                 //
                 //increment count
                 count++;
+                // console.log("count", count);
                 if (count === 4) {
                     return true; //we want the function to return truthy, for the if above
                 }
             } else {
-                //if not, then reser it back to 0
+                //if not, then reset it back to 0
                 count = 0;
                 // console.log("count after resetting", count);
             }
@@ -107,25 +137,41 @@
     }
 
     function modalFn(winner) {
-        var winText;
-        if (winner === "player1") {
-            winText = "red player";
-        } else {
-            winText = "yellow player";
-        }
         var myHtml = "";
-        myHtml = "<p>the winner is the" + "<br>" + winText + "!</p>";
-        myHtml += "<button class=nextRound>another round!</button>";
+        //if passed string "tied" from main clickEvent
+        if (winner === "tied") {
+            myHtml = "<p>TIED!<br>gameboard is full</p>";
+            myHtml += "<button class=nextRound>start a new game</button>";
+        } else {
+            var winText;
+            if (winner === "player1") {
+                winText = "red player";
+            } else {
+                winText = "orange player";
+            }
+            // myHtml = "<p>the winner is the" + "<br>" + winText + "!</p>";
+            myHtml = "<p>the " + winText + "<br>" + "wins this round!</p>";
+            myHtml += "<button class=nextRound>another round!</button>";
+        }
+        //creating the modal
         modal.html(myHtml);
         modal.addClass("modalOn");
+        //setting up restart buton
         $(".nextRound").click(function () {
-            console.log("clicked");
+            modal.addClass("modalOff"); //allowing off-animation
+            //wating for animation to end before reloading
+            $(document).on("transitionend", function () {
+                location.reload();
+            });
+            /*setTimeout(function () {
+                location.reload();
+            }, 1000);*/
+            // console.log("clicked");
             /*
             for (var i = 0; i < $(".column").length; i++) {
                 $(".column").children(i).removeClass("player1 player2");
                 modal.removeClass("modalOn");
             }*/
-            location.reload();
             // gameFn();
         });
     }

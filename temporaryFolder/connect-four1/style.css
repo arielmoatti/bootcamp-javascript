@@ -1,10 +1,11 @@
 * {
     margin: 0;
     font-family: "Share Tech Mono", monospace;
+    /* box-sizing: border-box; */
 }
 
 body {
-    background-color: wheat;
+    background-color: whitesmoke;
 }
 
 .board-container {
@@ -18,7 +19,7 @@ header {
     flex-direction: column;
 }
 header > p {
-    color: darkolivegreen;
+    color: #0a402b;
     font-size: 50px;
     text-align: center;
     padding: 20px;
@@ -30,12 +31,12 @@ header > p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: darkslategray;
+    background-color: #0a402b;
     z-index: 10;
     border-radius: 10px;
     border: 1px solid black;
     filter: drop-shadow(5px 5px 3px);
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
@@ -46,18 +47,15 @@ header > p {
 .winnerModal p {
     font-size: 40px;
     text-align: center;
-    color: lightskyblue;
+    color: whitesmoke;
 }
 .nextRound {
-    /* align-self: center; */
     margin-top: 15px;
     cursor: pointer;
     z-index: 11;
     border: 2px solid black;
     border-radius: 5px;
-    padding: 5px;
-    /* text-align: center; */
-    /* vertical-align: middle; */
+    padding: 5px 10px;
 }
 #board {
     display: flex;
@@ -67,28 +65,37 @@ header > p {
     height: 100px;
     width: 100px;
     overflow: hidden;
+    border-radius: 50%;
+    box-shadow: inset 8px 8px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hole {
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    border: 40px solid blue;
+    border: 40px solid #002642;
     transform: translate(-30px, -30px);
 }
 
 .player1 {
-    background-color: red;
+    background-color: #840032;
 }
 
 .player2 {
-    background-color: yellow;
+    background-color: #eb6b10;
 }
 
 .modalOn {
     visibility: visible;
     opacity: 0.9;
-    transition-property: opacity;
+    /* transition-property: opacity; */
     transition-duration: 1000ms;
-    /* transition-delay: 700ms; */
+    top: 50%;
+    left: 50%;
+}
+
+.modalOff {
+    opacity: 0;
+    transition-duration: 700ms;
+    /* visibility: hidden; */
 }
