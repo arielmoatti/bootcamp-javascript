@@ -1,14 +1,17 @@
 (function () {
+    console.log("sanity check for jqeury", $);
     //o~o~o~o~o~o~ global variable declarations
     const totalNumOfCol = $("#board").children().length; //total number of columns
     const totalNumOfRow = $(".column").eq(0).children().length; //total number of rows
     var currentPlayer = "player2";
     var allColumns = $(".column"); //grab all columns
     var modal = $(".winnerModal"); //grabs the modal popup
+
     var scores = {
         player1: 0,
         player2: 0,
     };
+
     //~~~~~~ invoking main function with page load
     switchPlayer();
     gameFn();
@@ -17,18 +20,9 @@
     function gameFn() {
         updateScores(); //starts with 0:0 and updates every game run
         var countTurns = 0; //counts the total turns to be checked for TIED
+        // switchPlayer();
+
         //~~~~~~ mouse event handlers for animation
-
-        allColumns.mousemove(function (e) {
-            $(".checker").css({
-                left:
-                    e.clientX -
-                    $(e.currentTarget).parent().offset().left -
-                    35 +
-                    "px",
-            });
-        });
-
         allColumns.mouseenter(function (e) {
             $(e.currentTarget).children().children().addClass("selColumn");
         });
@@ -54,8 +48,7 @@
                 }
             }
             //~~~~~~ checking TIED situation, when all total number of slots are "full"
-            if (countTurns === totalNumOfRow * totalNumOfCol) modalFn("tied");
-            //passing "tied" string to the modal
+            if (countTurns === totalNumOfRow * totalNumOfCol) modalFn("tied"); //passing "tied" string to the modal
 
             //~~~~~~ checks if col is full... and exits the function
             if (i < 0) return;
@@ -80,7 +73,7 @@
                 }
                 return seqArr; //to be passed as argument to checkForVictory
             }
-            //~~~~~~ passing to function for check winning / victory
+
             var slotsInRow = $(".row" + i);
             if (
                 checkForVictory(slotsInRow) ||
@@ -89,7 +82,7 @@
                 checkForVictory(checkDiags("+"))
             )
                 modalFn(currentPlayer);
-            switchPlayer(); // invokes the alternating players after each click
+            switchPlayer();
         });
     }
 
@@ -103,17 +96,24 @@
             if (slot.hasClass(currentPlayer)) {
                 //increment count
                 count++;
+                // slot.css({
+                //     "background-color": "yellow",
+                // });
+
                 if (count === 4) {
-                    //---------could be a place to flag winning checkers
+                    // if (currentPlayer == scores[0]) {
                     if (currentPlayer === "player1") {
                         scores.player1 += 1;
                     } else {
                         scores.player2 += 1;
                     }
+                    // updateScores();
                     return true; //we want the function to return truthy
                     // to the "if statement" that runs the "winner modal"
                 }
-            } else count = 0; //if not, then reset it back to 0
+            }
+            //if not, then reset it back to 0
+            else count = 0;
         }
     }
 
@@ -144,15 +144,20 @@
 
         //~~~~~~ setting up action button
         $(".modalButton").click(function () {
-            modal.addClass("modalOff"); //allowing off-animation
+            //modal.addClass("modalOff"); //allowing off-animation
+            //waiting for animation to end before reloading
+            //$(document).on("transitionend", function () {
+            // trying to reset without RELOAD
             var allSlots = $(".slot");
+
             for (var i = 0; i < allSlots.length; i++) {
                 allSlots.eq(i).removeClass("player1 player2");
             }
-            gameFn(); //re-run main function
+            modal.addClass("modalOff"); //allowing off-animation
+            gameFn(); //rerun main function
         });
     }
-    //~~~~~~ concatenate scores as html
+
     function updateScores() {
         var htmlPlayer1 = "0";
         var htmlPlayer2 = "0";
@@ -166,19 +171,13 @@
 
     //~~~~~~ alternates turns
     function switchPlayer() {
-        // currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
-        if (currentPlayer === "player2") {
-            currentPlayer = "player1";
+        currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
+        if (currentPlayer === "player1") {
             $(".playerOne").addClass("whoseTurn");
             $(".playerTwo").removeClass("whoseTurn");
-            $(".checker").addClass("player1");
-            $(".checker").removeClass("player2");
         } else {
-            currentPlayer = "player2";
             $(".playerTwo").addClass("whoseTurn");
             $(".playerOne").removeClass("whoseTurn");
-            $(".checker").addClass("player2");
-            $(".checker").removeClass("player1");
         }
     }
 })();

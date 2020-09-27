@@ -1,9 +1,9 @@
 (function () {
     //o~o~o~o~o~o~ global variable declarations
-    const totalNumOfCol = $("#board").children().length; //total number of columns
+    var allColumns = $(".column"); //grab all columns
+    const totalNumOfCol = allColumns.length; //total number of columns
     const totalNumOfRow = $(".column").eq(0).children().length; //total number of rows
     var currentPlayer = "player2";
-    var allColumns = $(".column"); //grab all columns
     var modal = $(".winnerModal"); //grabs the modal popup
     var scores = {
         player1: 0,
@@ -15,8 +15,8 @@
 
     //o~o~o~o~o~o~ main game function
     function gameFn() {
-        updateScores(); //starts with 0:0 and updates every game run
         var countTurns = 0; //counts the total turns to be checked for TIED
+        updateScores(); //starts with 0:0 and updates every game run
         //~~~~~~ mouse event handlers for animation
 
         allColumns.mousemove(function (e) {
