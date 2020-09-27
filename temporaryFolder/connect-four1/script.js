@@ -3,7 +3,7 @@
     //o~o~o~o~o~o~ global variable declarations
     const totalNumOfCol = $("#board").children().length; //total number of columns
     const totalNumOfRow = $(".column").eq(0).children().length; //total number of rows
-    var currentPlayer = "player1";
+    var currentPlayer = "player2";
     var allColumns = $(".column"); //grab all columns
     var modal = $(".winnerModal"); //grabs the modal popup
 
@@ -11,17 +11,16 @@
         player1: 0,
         player2: 0,
     };
-    console.log("scores", scores);
 
+    //~~~~~~ invoking main function with page load
+    switchPlayer();
     gameFn();
 
     //o~o~o~o~o~o~ main game function
     function gameFn() {
+        updateScores(); //starts with 0:0 and updates every game run
         var countTurns = 0; //counts the total turns to be checked for TIED
-        //~~~~~~ alternates turns
-        function switchPlayer() {
-            currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
-        }
+        // switchPlayer();
 
         //~~~~~~ mouse event handlers for animation
         allColumns.mouseenter(function (e) {
@@ -36,7 +35,6 @@
             $(e.currentTarget).children().children().removeClass("selColumn"); //cancels the effect
             var col = $(e.currentTarget);
             var slotsInCol = col.children();
-            console.log("countTurns", countTurns);
             var columnIdx = col.index();
 
             for (var i = slotsInCol.length - 1; i >= 0; i--) {
@@ -98,7 +96,6 @@
             if (slot.hasClass(currentPlayer)) {
                 //increment count
                 count++;
-                // console.log("count", count);
                 // slot.css({
                 //     "background-color": "yellow",
                 // });
@@ -110,8 +107,7 @@
                     } else {
                         scores.player2 += 1;
                     }
-                    console.log("scores", scores);
-                    updateScores();
+                    // updateScores();
                     return true; //we want the function to return truthy
                     // to the "if statement" that runs the "winner modal"
                 }
@@ -163,13 +159,25 @@
     }
 
     function updateScores() {
-        var htmlPlayer1 = "";
-        var htmlPlayer2 = "";
+        var htmlPlayer1 = "0";
+        var htmlPlayer2 = "0";
         var scoreBoxP1 = $(".playerOne");
         var scoreBoxP2 = $(".playerTwo");
         htmlPlayer1 = "<p class='scoreP'>" + scores.player1 + "</p>";
         htmlPlayer2 = "<p class='scoreP'>" + scores.player2 + "</p>";
         scoreBoxP1.html(htmlPlayer1);
         scoreBoxP2.html(htmlPlayer2);
+    }
+
+    //~~~~~~ alternates turns
+    function switchPlayer() {
+        currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
+        if (currentPlayer === "player1") {
+            $(".playerOne").addClass("whoseTurn");
+            $(".playerTwo").removeClass("whoseTurn");
+        } else {
+            $(".playerTwo").addClass("whoseTurn");
+            $(".playerOne").removeClass("whoseTurn");
+        }
     }
 })();
