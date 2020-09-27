@@ -1,43 +1,29 @@
 (function () {
     //variable declarations
-    const totalNumOfCol = $("#board").children().length; //total number of columns
-    const totalNumOfRow = $(".column").eq(0).children().length; //total number of rows
+    console.log($);
     var currentPlayer = "player1";
-    var allColumns = $(".column");
-    var allSlots = $(".slot");
     var modal = $(".winnerModal");
-    var fullCol = 0; //counter for tied posibility
-    /*
-    --older method to check for diags
     var checkersPlayer1 = [];
     var checkersPlayer2 = [];
-    */
-    /* --older method to find a tie
-    var fullColumn = []; //to check for tied
-    var tieArr = [1, 1, 1, 1, 1, 1, 1]; //result when tied, to compare
-    */
+    var fullCol = 0; //counter for tied posibility
+    const totalNumOfCol = $("#board").children().length; //total number of columns
+    var fullColumn = []; //to check for tied [outdated]
+    var tieArr = [1, 1, 1, 1, 1, 1, 1]; //result when tied, to compare [outdated]
+
+    //actiave game
+    gameFn();
 
     //alternate turns
     function switchPlayer() {
         currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
     }
 
-    //actiave game
-    gameFn();
-
-    allColumns.mouseenter(function (e) {
-        $(e.currentTarget).children().children().addClass("selColumn");
-    });
-
-    allColumns.mouseleave(function (e) {
-        $(e.currentTarget).children().children().removeClass("selColumn");
-    });
-
     //main game function
     function gameFn() {
-        allColumns.click(function (e) {
-            $(e.currentTarget).children().children().removeClass("selColumn");
+        $(".column").click(function (e) {
             var col = $(e.currentTarget);
+            var allColumns = $(".column");
+            // console.log("allColumns", allColumns);
             var slotsInCol = col.children();
             var columnIdx = col.index();
             // console.log("columnIdx", columnIdx);
@@ -97,71 +83,17 @@
                 console.log("row victory for", currentPlayer);
                 $(".column").off();
                 modalFn(currentPlayer);
-                /*
             } else if (checkDiagBLTR(columnIdx, i)) {
                 //check diag
                 console.log("diag victory for", currentPlayer);
                 $(".column").off();
                 modalFn(currentPlayer);
-                */
-            } else if (checkDiags(columnIdx, i)) {
-                console.log("diag victory for", currentPlayer);
             }
 
             switchPlayer();
         });
     }
-    /*
-    //------------------------incomplete
-    function checkDiags(passedCol, passedRow) {
-        console.log("passedRow", passedRow);
-        console.log("passedCol", passedCol);
-        for (
-            var firstRow = 0;
-            firstRow < totalNumOfRow.length - 4;
-            firstRow++
-        ) {
-            var countDiag = 0;
-            var checkRow, checkCol;
-            for (
-                checkCol = 0, checkRow = firstRow;
-                checkCol < totalNumOfCol && checkRow < totalNumOfRow;
-                checkCol++, checkRow++
-            ) {
-                if (
-                    passedCol === checkCol &&
-                    passedRow === checkRow &&
-                    allSlots.hasClass(currentPlayer)
-                ) {
-                    countDiag++;
-                    console.log("countDiag", countDiag);
-                }
-            }
-        }
-    }
-*/
 
-    //method using 5 and 7, still need to check next column
-    function checkDiags() {
-        //for BLTR or / diagonal
-        //need to use this somehow
-        //allColumns.index() != allColumns.next().index() &&
-        var count = 0;
-        console.log("column is", allColumns.index());
-        for (var i = 0; i < allSlots.length; i++) {
-            // console.log("i", i);
-            if (
-                allSlots.eq(i).hasClass(currentPlayer) &&
-                allSlots.eq(i + 5).hasClass(currentPlayer) &&
-                allSlots.eq(i + 10).hasClass(currentPlayer) &&
-                allSlots.eq(i + 15).hasClass(currentPlayer)
-            ) {
-                console.log("Diag winner is", currentPlayer);
-            }
-        }
-    }
-
-    /* -----------incomplete
     function checkDiagBLTR(chkCol, chkRow) {
         //need to build two functions: checkDiagBLTR, checkDiagTLBR
         // console.log("chkCol", chkCol);
@@ -192,6 +124,7 @@
                 count = 0;
             }
         }*/
+    }
 
     function checkForVictory(slots) {
         // console.log("about to check", slots);
@@ -224,7 +157,7 @@
         //if passed string "tied" from main clickEvent
         if (winner === "tied") {
             myHtml = "<p>TIED!<br>gameboard is full</p>";
-            myHtml += "<button class=modalButton>start a new round</button>";
+            myHtml += "<button class=nextRound>start a new round</button>";
         } else {
             var winText;
             if (winner === "player1") {
@@ -234,15 +167,15 @@
             }
             // myHtml = "<p>the winner is the" + "<br>" + winText + "!</p>";
             myHtml = "<p>the " + winText + "<br>" + "wins this round!</p>";
-            myHtml += "<button class=modalButton>another round!</button>";
+            myHtml += "<button class=nextRound>another round!</button>";
         }
         //creating the modal
         modal.html(myHtml);
         modal.addClass("modalOn");
         //setting up restart buton
-        $(".modalButton").click(function () {
+        $(".nextRound").click(function () {
             modal.addClass("modalOff"); //allowing off-animation
-            //waiting for animation to end before reloading
+            //wating for animation to end before reloading
             $(document).on("transitionend", function () {
                 location.reload();
             });
@@ -258,4 +191,23 @@
             // gameFn();
         });
     }
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
 })();

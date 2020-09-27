@@ -104,57 +104,51 @@
                 $(".column").off();
                 modalFn(currentPlayer);
                 */
-            } else if (checkDiags(columnIdx, i)) {
+            } else if (checkDiags()) {
                 console.log("diag victory for", currentPlayer);
             }
 
             switchPlayer();
         });
     }
-    /*
-    //------------------------incomplete
-    function checkDiags(passedCol, passedRow) {
-        console.log("passedRow", passedRow);
-        console.log("passedCol", passedCol);
+
+    /* ------------------------incomplete
+    function checkDiags() {
         for (
             var firstRow = 0;
             firstRow < totalNumOfRow.length - 4;
             firstRow++
         ) {
             var countDiag = 0;
-            var checkRow, checkCol;
+            var checkRow, CheckCol;
             for (
                 checkCol = 0, checkRow = firstRow;
                 checkCol < totalNumOfCol && checkRow < totalNumOfRow;
-                checkCol++, checkRow++
+                CheckCol++, checkRow++
             ) {
-                if (
-                    passedCol === checkCol &&
-                    passedRow === checkRow &&
-                    allSlots.hasClass(currentPlayer)
-                ) {
-                    countDiag++;
-                    console.log("countDiag", countDiag);
+                if (allSlots.hasClass(currentPlayer)) {
                 }
+                countDiag++;
             }
         }
     }
-*/
+    */
 
-    //method using 5 and 7, still need to check next column
     function checkDiags() {
         //for BLTR or / diagonal
-        //need to use this somehow
-        //allColumns.index() != allColumns.next().index() &&
         var count = 0;
         console.log("column is", allColumns.index());
         for (var i = 0; i < allSlots.length; i++) {
             // console.log("i", i);
             if (
                 allSlots.eq(i).hasClass(currentPlayer) &&
+                allColumns.index() != allColumns.next().index() &&
                 allSlots.eq(i + 5).hasClass(currentPlayer) &&
+                allColumns.index() != allColumns.next().index() &&
                 allSlots.eq(i + 10).hasClass(currentPlayer) &&
-                allSlots.eq(i + 15).hasClass(currentPlayer)
+                allColumns.index() != allColumns.next().index() &&
+                allSlots.eq(i + 15).hasClass(currentPlayer) &&
+                allColumns.index() != allColumns.next().index()
             ) {
                 console.log("Diag winner is", currentPlayer);
             }

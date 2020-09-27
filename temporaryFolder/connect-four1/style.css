@@ -8,21 +8,54 @@ body {
     background-color: whitesmoke;
 }
 
+header {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+header > p {
+    color: #0a402b;
+    font-size: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
 .board-container {
     display: flex;
     justify-content: center;
     position: relative;
 }
 
-header {
+#board {
     display: flex;
-    flex-direction: column;
 }
-header > p {
-    color: #0a402b;
-    font-size: 50px;
-    text-align: center;
-    padding: 20px;
+
+.slot {
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    /* box-shadow: inset 8px 8px 3px 7px rgba(0, 0, 0, 0.5); */
+}
+
+.hole {
+    box-shadow: inset 5px 5px 5px 1px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transition: opacity 0.5s;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 40px solid rgba(0, 38, 66, 1);
+    transform: translate(-30px, -30px);
+}
+
+.player1 {
+    background-color: #840032;
+}
+
+.player2 {
+    background-color: #eb6b10;
 }
 
 .winnerModal {
@@ -44,45 +77,20 @@ header > p {
     opacity: 0;
     visibility: hidden;
 }
+
 .winnerModal p {
     font-size: 40px;
     text-align: center;
     color: whitesmoke;
 }
-.nextRound {
+
+.modalButton {
     margin-top: 15px;
     cursor: pointer;
     z-index: 11;
     border: 2px solid black;
     border-radius: 5px;
     padding: 5px 10px;
-}
-#board {
-    display: flex;
-}
-
-.slot {
-    height: 100px;
-    width: 100px;
-    overflow: hidden;
-    border-radius: 50%;
-    box-shadow: inset 8px 8px 3px 10px rgba(0, 0, 0, 0.5);
-}
-
-.hole {
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    border: 40px solid #002642;
-    transform: translate(-30px, -30px);
-}
-
-.player1 {
-    background-color: #840032;
-}
-
-.player2 {
-    background-color: #eb6b10;
 }
 
 .modalOn {
@@ -98,4 +106,10 @@ header > p {
     opacity: 0;
     transition-duration: 700ms;
     /* visibility: hidden; */
+}
+
+.selColumn {
+    /* border: 40px solid rgba(0, 38, 66, 0.5); */
+    opacity: 0.4;
+    transition: opacity 0.2s;
 }
