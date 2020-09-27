@@ -1,32 +1,15 @@
-var rowArr = [
-    [0, 6, 12, 18, 24, 30, 36],
-    [1, 7, 13, 19, 25, 31, 37],
-    [5, 11, 17, 23, 29, 35, 41],
-];
-
-var diagRowArr = [];
-// var diag1Row;
-// var diag2Row;
-
-// console.log("rowArr", rowArr);
-//run this for every "slot" hasClass
-document.addEventListener("click", function () {
-    var slot = 5;
-    for (var i = 0; i < rowArr.length; i++) {
-        for (var j = 0; j < rowArr[i].length; j++) {
-            // console.log("i", rowArr[i]);
-            if (slot === rowArr[i][j]) {
-                diagRowArr.push(i);
-            }
-        }
+function test(oper) {
+    var a = 5;
+    var b = 12;
+    function arithmetics() {
+        // var sum = "a" + oper + "b";
+        // var sum = "a" + oper + "b";
+        return eval("a" + oper + "b");
+        // return eval(sum);
     }
-    for (x = 0; x < diagRowArr.length; x++) {
-        if (diagRowArr[x]) console.log("diagRowArr", diagRowArr);
-    }
-});
+    // return a;
+    return arithmetics();
+}
 
-// console.log("diag1Row", diag1Row);
-
-// if (diag1Row - diag2Row === 1) {
-
-// }
+var result = test("+");
+console.log("result", result);
