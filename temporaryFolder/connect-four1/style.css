@@ -6,25 +6,35 @@
 
 body {
     background-color: whitesmoke;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
 }
 
-header {
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#top {
     display: flex;
     flex-direction: column;
     height: 200px;
 }
 
-header > p {
+#top > p {
     color: #0a402b;
     font-size: 50px;
-    text-align: center;
+    /* text-align: center; */
     padding: 20px;
 }
 
 .board-container {
     display: flex;
-    justify-content: center;
-    position: relative;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* position: relative; */
 }
 
 #board {
@@ -105,11 +115,56 @@ header > p {
 .modalOff {
     opacity: 0;
     transition-duration: 700ms;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .selColumn {
     /* border: 40px solid rgba(0, 38, 66, 0.5); */
     opacity: 0.4;
     transition: opacity 0.2s;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    /* width: 30%; */
+}
+
+#bottom {
+    /* padding-top: 40px; */
+    /* width: 50%;
+    height: 120px; */
+}
+
+.playerOne {
+    background-color: #840032;
+    margin: 20px;
+    height: 70px;
+    width: 130px;
+    /* border: 1px solid grey; */
+    border-radius: 5% 20%;
+    filter: drop-shadow(3px 3px 4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.playerTwo {
+    background-color: #eb6b10;
+    margin: 20px;
+    height: 70px;
+    width: 130px;
+    /* border: 1px solid grey; */
+    border-radius: 5% 20%;
+    filter: drop-shadow(3px 3px 4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreP {
+    font-size: 60px;
+    color: whitesmoke;
 }

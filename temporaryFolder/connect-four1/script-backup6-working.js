@@ -17,7 +17,6 @@
 
     //o~o~o~o~o~o~ main game function
     function gameFn() {
-        var countTurns = 0; //counts the total turns to be checked for TIED
         //~~~~~~ alternates turns
         function switchPlayer() {
             currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
@@ -36,7 +35,7 @@
             $(e.currentTarget).children().children().removeClass("selColumn"); //cancels the effect
             var col = $(e.currentTarget);
             var slotsInCol = col.children();
-            console.log("countTurns", countTurns);
+            var countTurns = 0; //counts the total turns to be checked for TIED
             var columnIdx = col.index();
 
             for (var i = slotsInCol.length - 1; i >= 0; i--) {
@@ -111,7 +110,7 @@
                         scores.player2 += 1;
                     }
                     console.log("scores", scores);
-                    updateScores();
+
                     return true; //we want the function to return truthy
                     // to the "if statement" that runs the "winner modal"
                 }
@@ -153,23 +152,16 @@
             //$(document).on("transitionend", function () {
             // trying to reset without RELOAD
             var allSlots = $(".slot");
-
             for (var i = 0; i < allSlots.length; i++) {
                 allSlots.eq(i).removeClass("player1 player2");
             }
             modal.addClass("modalOff"); //allowing off-animation
-            gameFn(); //rerun main function
-        });
-    }
+            gameFn();
 
-    function updateScores() {
-        var htmlPlayer1 = "";
-        var htmlPlayer2 = "";
-        var scoreBoxP1 = $(".playerOne");
-        var scoreBoxP2 = $(".playerTwo");
-        htmlPlayer1 = "<p class='scoreP'>" + scores.player1 + "</p>";
-        htmlPlayer2 = "<p class='scoreP'>" + scores.player2 + "</p>";
-        scoreBoxP1.html(htmlPlayer1);
-        scoreBoxP2.html(htmlPlayer2);
+            //older (working) method
+            // location.reload();
+            //consider invoking the main function again?
+            //});
+        });
     }
 })();

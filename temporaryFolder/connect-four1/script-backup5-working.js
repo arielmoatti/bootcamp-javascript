@@ -1,42 +1,29 @@
 (function () {
     console.log("sanity check for jqeury", $);
-    //o~o~o~o~o~o~ global variable declarations
+    //~~~~~~ variable declarations
     const totalNumOfCol = $("#board").children().length; //total number of columns
     const totalNumOfRow = $(".column").eq(0).children().length; //total number of rows
     var currentPlayer = "player1";
     var allColumns = $(".column"); //grab all columns
-    var modal = $(".winnerModal"); //grabs the modal popup
-
-    var scores = {
-        player1: 0,
-        player2: 0,
-    };
+    var modal = $(".winnerModal");
+    var countTurns = 0; //counts the total turns to be checked for TIED
+    var scores = [["player1"], ["player2"]];
     console.log("scores", scores);
 
+    //~~~~~~ alternates turns
+    function switchPlayer() {
+        currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
+    }
+
+    //~~~~~~ actiaves game
     gameFn();
 
-    //o~o~o~o~o~o~ main game function
+    //~~~~~~ main game function
     function gameFn() {
-        var countTurns = 0; //counts the total turns to be checked for TIED
-        //~~~~~~ alternates turns
-        function switchPlayer() {
-            currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
-        }
-
-        //~~~~~~ mouse event handlers for animation
-        allColumns.mouseenter(function (e) {
-            $(e.currentTarget).children().children().addClass("selColumn");
-        });
-
-        allColumns.mouseleave(function (e) {
-            $(e.currentTarget).children().children().removeClass("selColumn");
-        });
-        //~~~~~~ main click event listesen
         allColumns.click(function (e) {
             $(e.currentTarget).children().children().removeClass("selColumn"); //cancels the effect
             var col = $(e.currentTarget);
             var slotsInCol = col.children();
-            console.log("countTurns", countTurns);
             var columnIdx = col.index();
 
             for (var i = slotsInCol.length - 1; i >= 0; i--) {
@@ -45,7 +32,7 @@
                     !slotsInCol.eq(i).hasClass("player2")
                 ) {
                     slotsInCol.eq(i).addClass(currentPlayer);
-                    countTurns++; //to be soon used for TIED
+                    countTurns++; //to be later used for TIED
                     break;
                 }
             }
@@ -88,30 +75,28 @@
         });
     }
 
-    //o~o~o~o~o~o~ win checking function
+    //~~~~~~ win checking function
     function checkForVictory(slots) {
         var count = 0;
-
+        var wins = 1;
         // loop over all slots and check if there 4 "currentPlayer" in a row
         for (var i = 0; i < slots.length; i++) {
             var slot = $(slots[i]);
             if (slot.hasClass(currentPlayer)) {
                 //increment count
                 count++;
-                // console.log("count", count);
                 // slot.css({
                 //     "background-color": "yellow",
                 // });
 
                 if (count === 4) {
-                    // if (currentPlayer == scores[0]) {
-                    if (currentPlayer === "player1") {
-                        scores.player1 += 1;
+                    if (currentPlayer === scores[0][0]) {
+                        scores[0].push(wins++);
                     } else {
-                        scores.player2 += 1;
+                        scores[1].push(wins++);
                     }
                     console.log("scores", scores);
-                    updateScores();
+
                     return true; //we want the function to return truthy
                     // to the "if statement" that runs the "winner modal"
                 }
@@ -121,11 +106,9 @@
         }
     }
 
-    //o~o~o~o~o~o~ end game result function
+    //~~~~~~ end game result function
     function modalFn(winner) {
         $(".column").off(); //immediately stops the event listener for the game!
-        modal.removeClass("modalOff");
-        // modal.removeClass("modalOn");
         var myHtml = "";
         //if passed string "tied" from main clickEvent
         if (winner === "tied") {
@@ -145,31 +128,22 @@
         //creating the modal
         modal.html(myHtml);
         modal.addClass("modalOn");
-
-        //~~~~~~ setting up action button
+        //setting up restart button
         $(".modalButton").click(function () {
-            //modal.addClass("modalOff"); //allowing off-animation
-            //waiting for animation to end before reloading
-            //$(document).on("transitionend", function () {
-            // trying to reset without RELOAD
-            var allSlots = $(".slot");
-
-            for (var i = 0; i < allSlots.length; i++) {
-                allSlots.eq(i).removeClass("player1 player2");
-            }
             modal.addClass("modalOff"); //allowing off-animation
-            gameFn(); //rerun main function
+            //waiting for animation to end before reloading
+            $(document).on("transitionend", function () {
+                location.reload();
+            });
         });
     }
 
-    function updateScores() {
-        var htmlPlayer1 = "";
-        var htmlPlayer2 = "";
-        var scoreBoxP1 = $(".playerOne");
-        var scoreBoxP2 = $(".playerTwo");
-        htmlPlayer1 = "<p class='scoreP'>" + scores.player1 + "</p>";
-        htmlPlayer2 = "<p class='scoreP'>" + scores.player2 + "</p>";
-        scoreBoxP1.html(htmlPlayer1);
-        scoreBoxP2.html(htmlPlayer2);
-    }
+    //~~~~~~ mouse event handlers for animation
+    allColumns.mouseenter(function (e) {
+        $(e.currentTarget).children().children().addClass("selColumn");
+    });
+
+    allColumns.mouseleave(function (e) {
+        $(e.currentTarget).children().children().removeClass("selColumn");
+    });
 })();
