@@ -169,14 +169,14 @@
         // currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
         if (currentPlayer === "player2") {
             currentPlayer = "player1";
-            // $(".playerOne").addClass("whoseTurn");
-            // $(".playerTwo").removeClass("whoseTurn");
+            $(".playerOne").addClass("whoseTurn");
+            $(".playerTwo").removeClass("whoseTurn");
             $(".checker").addClass("player1");
             $(".checker").removeClass("player2");
         } else {
             currentPlayer = "player2";
-            // $(".playerTwo").addClass("whoseTurn");
-            // $(".playerOne").removeClass("whoseTurn");
+            $(".playerTwo").addClass("whoseTurn");
+            $(".playerOne").removeClass("whoseTurn");
             $(".checker").addClass("player2");
             $(".checker").removeClass("player1");
         }
