@@ -49,6 +49,7 @@ option {
 button {
     cursor: pointer;
     width: 7em;
+    font-weight: bolder;
 }
 #results-container {
     display: flex;
@@ -99,5 +100,5 @@ img {
 #moreBtn {
     align-self: center;
     margin-bottom: 40px;
-    visibility: hidden;
+    /* visibility: hidden; */
 }

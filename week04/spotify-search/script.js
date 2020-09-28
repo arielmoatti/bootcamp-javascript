@@ -2,11 +2,21 @@
     //~~~~ global declarations
     var baseUrl = "https://spicedify.herokuapp.com/spotify";
     var nextUrl = "";
+    var more = $("#moreBtn");
+    more.hide(); //initially hides the "more results" button
 
     //~~~~ search button click handler
     $("#searchBtn").click(function () {
-        userInput = $("input").val();
-        albumOrArtist = $("select").val();
+        searchFn();
+    }); //closes search click
+
+    $("input").keypress(function (e) {
+        if (e.keyCode == 13) searchFn();
+    });
+
+    function searchFn() {
+        var userInput = $("input").val();
+        var albumOrArtist = $("select").val();
         //calling the initial AJAX request
         $.ajax({
             url: baseUrl,
@@ -19,6 +29,7 @@
                 successFn(resBase);
             },
         });
+
         //~~~~ main function
         function successFn(resData) {
             var response = resData.artists || resData.albums;
@@ -29,7 +40,6 @@
                     "api.spotify.com/v1/search",
                     "spicedify.herokuapp.com/spotify"
                 );
-
             var resultHtml = "";
             var resultsMessage = $("#resultText");
             //main search for loop
@@ -63,23 +73,29 @@
                         userInput +
                         "</p>"
                 );
+                //checking if there are more results
+                if (nextUrl) {
+                    more.show();
+                    more.click(function () {
+                        $.ajax({
+                            url: nextUrl,
+                            method: "GET",
+                            success: function (resNext) {
+                                successFn(resNext);
+                            },
+                        }); //closes Ajax request
+                    }); //closes "more" button event listener
+                } else {
+                    more.hide();
+                }
             } else {
                 resultsMessage.html(
                     "<p class='text'>no results found for: <span class='text searchText'>" +
                         userInput +
                         "</span>"
                 );
+                $("#results-container").html(""); //clears all previus results
             } //closes if statement
         } //closes success function
-        $("#moreBtn").click(function () {
-            // console.log("nextUrl", nextUrl);
-            $.ajax({
-                url: nextUrl,
-                method: "GET",
-                success: function (resNext) {
-                    successFn(resNext);
-                },
-            });
-        });
-    }); //closes search click
+    } //closes "searchFn"
 })();
