@@ -2,13 +2,11 @@
     //~~~~ global declarations
     var baseUrl = "https://spicedify.herokuapp.com/spotify";
     var nextUrl = "";
-    var resultHtml = ""; //HAS TO BE OUT - SO AS NOT TO BE RESET for more results!
     var more = $("#moreBtn");
     more.hide(); //initially hides the "more results" button
 
     //~~~~ search button click handler
     $("#searchBtn").click(function () {
-        resultHtml = ""; //resets the html on every new search!
         searchFn();
     }); //closes search click
 
@@ -42,7 +40,7 @@
                     "api.spotify.com/v1/search",
                     "spicedify.herokuapp.com/spotify"
                 );
-
+            var resultHtml = "";
             var resultsMessage = $("#resultText");
             //main search for loop
             if (response.items.length > 0) {
@@ -57,7 +55,6 @@
                     }
                     var extLink = response.items[i].external_urls.spotify; //link to spotify artist page
                     //injecting results as new html elements
-
                     resultHtml +=
                         "<a href='" +
                         extLink +
@@ -80,12 +77,6 @@
                 if (nextUrl) {
                     more.show();
                     more.click(function () {
-                        //saving current scroll position
-                        $(document).ready(function (e) {
-                            $(document).scrollTop(
-                                $(document).scrollTop() - 100
-                            );
-                        });
                         $.ajax({
                             url: nextUrl,
                             method: "GET",
@@ -104,7 +95,6 @@
                         "</span>"
                 );
                 $("#results-container").html(""); //clears all previus results
-                more.hide();
             } //closes if statement
         } //closes success function
     } //closes "searchFn"

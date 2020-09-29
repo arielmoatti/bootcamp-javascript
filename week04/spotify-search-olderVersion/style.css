@@ -12,32 +12,10 @@ body {
     flex-direction: column;
 }
 
-header {
-    display: flex;
-    padding-top: 30px;
-    padding-left: 10px;
-    align-items: center;
-    padding-bottom: 20px;
-}
-
-h1 {
-    color: #f2a365;
-    font-size: 50px;
-    padding: 20px;
-}
-.logo {
-    /* position: absolute; */
-    opacity: 0.6;
-    /* top: 50px; */
-    /* right: 100px; */
-    width: 100px;
-    height: 100px;
-    /* align-self: flex-end; */
-}
-.searchArea {
+.header {
     padding-left: 20px;
     padding-bottom: 20px;
-    /* height: 100px; */
+    height: 200px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
