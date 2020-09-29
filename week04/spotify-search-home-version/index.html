@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <title>Spotify Search</title>
+    </head>
+    <body>
+        <div id="top">
+        <header>
+            <img src="https://nohalfmeasures.com/wp-content/uploads/2013/03/spotify-icon-3.png" alt="spotify icon" class="logo" srcset="">
+            <h1>Spotify Search</h1>
+        </header>
+        <section class="searchArea" id="myHeader">
+            <input type="text" name="user-input" autocomplete="off" id="">
+            <select>
+                <option id="artist">artist</option>
+                <option id="album">album</option>
+            </select>
+            <button id="searchBtn">search</button>
+        </section>
+        <div id="resultText"></div>
+        </div>
+        <div id="results-container">
+            <div class="result">
+                <div class="imageCont"></div>
+            </div>
+        </div>
+        <button  id="moreBtn">more</button>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js" charset="utf-8"></script>
+    </body>
+</html>
