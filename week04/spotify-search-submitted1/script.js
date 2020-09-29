@@ -42,6 +42,7 @@
                     "api.spotify.com/v1/search",
                     "spicedify.herokuapp.com/spotify"
                 );
+            console.log("nextUrl", nextUrl);
 
             var resultsMessage = $("#resultText");
             //main search for loop
