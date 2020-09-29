@@ -7,19 +7,27 @@
     var more = $("#moreBtn");
     more.hide(); //initially hides the "more results" button
     var scrollLocation;
-    console.log("scrollLocation initial", scrollLocation);
 
-    //~~~~ stoing the scroll position
+    //~~~~ storing the scroll position
     more.on("mouseenter", function () {
         scrollLocation = $(document).scrollTop();
         console.log("scrollLocation after mouse enter", scrollLocation);
     });
 
+    //~~~~ results on enter key
+    input.keypress(function (e) {
+        if (e.keyCode == 13) searchFn(e);
+    });
+
     //~~~~ search button click handler
     $(document).on("click", "#searchBtn, #moreBtn", function (e) {
+        searchFn(e);
+    });
+    //~~~~ main search function
+    function searchFn(e) {
         var searchBtnClc;
-        if (e.target.id == "searchBtn") {
-            console.log("searchBtn");
+        if (e.target.id == "searchBtn" || e.keyCode == 13) {
+            // console.log("searchBtn");
             searchBtnClc = true;
         }
         var url, data;
@@ -30,44 +38,37 @@
                 type: select.val(),
             };
         } else {
-            console.log("moreBtn");
+            // console.log("moreBtn");
             url = nextUrl;
-            //setting scroll position to stored
-            /*console.log(
-                "scrollLocation before clicking the button",
-                scrollLocation
-            );
-            $(document).scrollTop(scrollLocation);*/
         }
-
+        //main ajax request
         $.ajax({
             url: url,
             data: data,
             success: function (data) {
                 data = data.artists || data.albums;
-
                 nextUrlreplaced =
                     data.next &&
                     data.next.replace(
                         "api.spotify.com/v1/search",
                         "spicedify.herokuapp.com/spotify"
-                    );
+                    ); //to match original security issues
 
                 handleNextUrl(nextUrlreplaced);
-
+                checkScrollPos();
                 if (searchBtnClc) {
                     results.html(getResultHtml(data.items));
                     $(".imageCont").addClass("imageOn"); //needed hidden because of borders and shadows
                 } else {
                     results.append(getResultHtml(data.items));
                     $(".imageCont").addClass("imageOn"); //needed hidden because of borders and shadows
-                    $(document).scrollTop(scrollLocation);
+                    $(document).scrollTop(scrollLocation); //sets the scroll to the position before pagination
                 }
             },
-        });
-    });
-    //~~~~
+        }); //closing ajax request
+    } //closing searchFn
 
+    //~~~~ main HTML injector
     function getResultHtml(items) {
         var resultHtml = "";
         var resultsMessage = $("#resultText");
@@ -95,7 +96,7 @@
                     imgUrl +
                     "'></div></div></a>";
             } //closes main for loop
-
+            // search result section on top
             resultsMessage.html(
                 "<p class='text'>showing search results for:<p class='text searchText'>" +
                     input.val() +
@@ -111,14 +112,41 @@
             results.html(""); //clears all previus results
             more.hide();
         } //closes the if block
-    } //closes the getResultHtml function
+    } //closes the html function
 
+    //~~~~ feeding the ajax with "more results" request, showing the button dependently
     function handleNextUrl(next) {
         nextUrl = next;
         if (!nextUrl) {
             more.hide();
         } else {
             more.show();
+            //check scroll infinite
+            //checkScrollPos() ??????????????????
+        }
+    }
+
+    //~~~~ check infinite scroll
+    function checkScrollPos() {
+        var hasScrolledToBottom;
+
+        if (location.search.indexOf("scroll=infinite") > -1) {
+            console.log("infinite!");
+            more.hide();
+        } else {
+            console.log("NOT infinite!");
+        }
+
+        if (
+            $(window).height() + $(document).scrollTop() >=
+            $(document).height() - 100
+        ) {
+            hasScrolledToBottom = true;
+            if (hasScrolledToBottom) {
+                handleNextUrl();
+            } else {
+                setTimeout(checkScrollPos, 500);
+            }
         }
     }
 
@@ -134,7 +162,8 @@
 
     // Get the offset position of the navbar
     var sticky = header.offsetTop;
-    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    // Add the "sticky" class to the header when you reach its scroll position.
+    //Remove "sticky" when you leave the scroll position
     function headerScroll() {
         if (window.pageYOffset > sticky) {
             header.classList.add("sticky");
@@ -142,10 +171,5 @@
             header.classList.remove("sticky");
         }
     }
-    //
-
-    //
-    //
-    //
     //
 })();
