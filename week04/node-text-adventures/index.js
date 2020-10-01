@@ -1,23 +1,22 @@
-const readline = require("readline"); //built in in node, no need to install
+const readline = require("readline");
 
 const rl = readline.createInterface({
-    // a method to create interface, it takes an object as argument
-    input: process.stdin, //the object allows us to input and print out
+    input: process.stdin,
     output: process.stdout,
 });
 
-let gamePlay = {
-    q: "Welcome to The Land Of Wizards! Would you like to play?",
+const adventure = {
+    q: "Welcome to The Land Of Wizards! Would you like to play? [yes||no] ",
     answers: {
         yes: {
             q:
-                "You are alone in a dark forest and facing a fork in the road. Which direction do you turn?",
+                "You are alone in a dark forest and facing a fork in the road. Which direction do you turn? [left||right] ",
             answers: {
                 left: {
                     q:
                         "There's a scary wizard! He asks you a tough question. What's 1+1?",
                     answers: {
-                        2: "congratulations!",
+                        2: "congratulations! It was fun playing with you. Goodbye!",
                     },
                 },
                 right: "This was not the right choice. Goodbye!",
@@ -26,58 +25,22 @@ let gamePlay = {
         no: "Alright then. Enjoy your day!",
     },
 };
-/*
-//1.
 
-//takes two arguments: 1. the actual text, 2. is the user input as argument into a callback function
-function askQuestion(ObjArg) {
-    rl.question(ObjArg.q, (answer) => {
-        
-        if (ObjArg.answers[answer]) {
-            console.log(ObjArg.answers[answer]);
-            askQuestion(gamePlay); //we need to use recursion to be passed
-            //need to check typeOf === object continue, if === string, close interface
-            //when the last question was asked, close the interface
-            // rl.close(); //exits the program
-        } else {
-            console.log("I didn't quite get it, let me ask you again -");
-            askQuestion(gamePlay);
-        }
-    });
-}
-askQuestion(gamePlay);
-*/
-/*
-function findVal(object, key) {
-    var value;
-    Object.keys(object).some(function (k) {
-        if (k === key) {
-            value = object[k];
-            return true;
-        }
-        if (object[k] && typeof object[k] === "object") {
-            value = findVal(object[k], key);
-            return value !== undefined;
-        }
-    });
-    return value;
-}
-
-console.log(findVal(gamePlay, "answers"));
-*/
-
-function iterate(obj, stack) {
-    for (var property in obj) {
-        if (obj.hasOwnProperty(property)) {
-            if (typeof obj[property] == "object") {
-                iterate(obj[property], property);
-            } else {
-                console.log(property + "   " + obj[property]);
-                // $("#output").append($("<div/>").text(stack + "." + property));
+function askQuestion(objArg) {
+    rl.question(objArg.q, (answer) => {
+        let ans = objArg.answers[answer];
+        if (ans) {
+            if (typeof ans == "object") {
+                askQuestion(ans);
+            } else if (typeof ans == "string") {
+                console.log(ans);
+                rl.close();
             }
+        } else {
+            console.log("ahh, I didn't quite get it, let's try again - ");
+            askQuestion(objArg);
         }
-    }
+    });
 }
 
-// iterate(gamePlay, "q");
-iterate(gamePlay);
+askQuestion(adventure);
