@@ -33,3 +33,26 @@ function logSizes(dir) {
 logSizes(myPath);
 
 //part 2.
+
+function mapSizes(dir) {
+    const obj = {};
+    let fileName;
+    let dirName;
+    const passedDir = fs.readdirSync(dir, { withFileTypes: true });
+    for (let i = 0; i < passedDir.length; i++) {
+        if (passedDir[i].isFile()) {
+            fileName = `${passedDir[i].name}`;
+            const myStat = fs.statSync(`${dir}/${fileName}`);
+            obj[fileName] = myStat["size"];
+        } else if (passedDir[i].isDirectory()) {
+            dirName = `${passedDir[i].name}`;
+            obj[dirName] = mapSizes(`${dir}/${passedDir[i].name}`);
+        }
+    }
+    return obj;
+}
+let returneddObj = mapSizes(myPath);
+fs.writeFileSync(
+    `${__dirname}/files.json`,
+    JSON.stringify(returneddObj, null, 4)
+);
