@@ -30,7 +30,7 @@ const server = http.createServer((request, response) => {
     });
     //////////////part 2. ends here
     if (request.method === "GET" || request.method === "HEAD") {
-        response.setHeader("content-type", "text-html");
+        response.setHeader("Content-Type", "text-html");
         response.statusCode = 200;
         if (request.method === "GET") {
             response.end(
