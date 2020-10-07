@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    font-family: "Share Tech Mono", monospace;
+}
+
+body {
+    background-color: whitesmoke;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#top {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 560px;
+}
+
+#top > p {
+    color: #0a402b;
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.checker {
+    background-color: #840032;
+    position: relative;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+.board-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#board {
+    display: flex;
+}
+
+.slot {
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.hole {
+    box-shadow: inset 5px 5px 5px 1px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transition: opacity 0.5s;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 40px solid rgba(0, 38, 66, 0.9);
+    transform: translate(-30px, -30px);
+}
+
+.player1 {
+    background-color: #840032;
+}
+
+.player2 {
+    background-color: #eb6b10;
+}
+
+.winnerModal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a402b;
+    z-index: 10;
+    border-radius: 10px;
+    border: 1px solid black;
+    filter: drop-shadow(5px 5px 3px);
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 150px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.winnerModal p {
+    font-size: 40px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.modalButton {
+    margin-top: 15px;
+    cursor: pointer;
+    z-index: 11;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.modalOn {
+    visibility: visible;
+    opacity: 0.85;
+    transition-duration: 1000ms;
+    top: 50%;
+    left: 50%;
+}
+
+.modalOff {
+    opacity: 0;
+    transition-duration: 700ms;
+    visibility: hidden;
+}
+
+.selColumn {
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scoreBox {
+    margin: 20px;
+    height: 70px;
+    width: 130px;
+    border-radius: 5% 20%;
+    filter: drop-shadow(0px 0px 8px);
+    box-shadow: inset 0px 0px 0px 0px #fff;
+    transition: box-shadow 200ms ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.playerOne {
+    background-color: #840032;
+}
+
+.playerTwo {
+    background-color: #eb6b10;
+}
+
+.scoreP {
+    font-size: 50px;
+    color: whitesmoke;
+}
+
+.whoseTurn {
+    box-shadow: inset 0px 0px 15px 2px #fff;
+    transition: 500ms;
+}

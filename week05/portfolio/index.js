@@ -1,8 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-// const myStuff = require("./fun.js");
-// myStuff.generateHtml();
+
 const { generateHtml } = require("./html-builder.js");
 // generateHtml();
 

@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    position: relative;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+img {
+    align-self: center;
+    opacity: 0.4;
+    width: 100vw;
+}
+.container {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background-color: transparent;
+}
+h1 {
+    font-size: 25px;
+    padding-bottom: 10px;
+    background-color: transparent;
+    color: darkslategray;
+    width: 260px;
+    text-align: justify;
+    text-align-last: justify;
+    letter-spacing: 0.2em;
+    text-shadow: 5px 5px 6px dimgray;
+}
+
+p.country {
+    font-family: "Courier New", Courier, monospace;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.results {
+    padding-top: 5px;
+    background-color: transparent;
+}
+
+.highlight {
+    color: whitesmoke;
+    background-color: darkslategray;
+}
+
+.noResults {
+    font-family: "Courier New", Courier, monospace;
+    color: grey;
+    padding: 5px;
+}
+
+button {
+    font-style: italic;
+    color: darkslategray;
+    border-radius: 2px 7px 2px 7px;
+    cursor: pointer;
+    height: 2em;
+}
+
+input {
+    color: darkslategray;
+    border-radius: 2px 7px 2px 7px;
+    height: 2em;
+    padding: 5px;
+}
