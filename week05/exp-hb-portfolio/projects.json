@@ -28,6 +28,10 @@
         "dir": "panes"
     },
     {
+        "title": "Flying Sticky",
+        "dir": "canvas-stick-figure"
+    },
+    {
         "title": "Welcome to Spiced",
         "dir": "welcome-website"
     },

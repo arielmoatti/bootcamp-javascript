@@ -1,13 +1,12 @@
-    <h3>Welcome to my portfolio</h3>    
-    <div id="main-container">
-    {{#projects}}
-    <a href="/{{dir}}" target="_blank">
-        <div class="proj-container">
-            <p>{{title}}</p>
-            <div class='imageCont'>
-                <img src="/{{dir}}/thumbnail.png">
-            </div>
+<div id="main-container">
+{{#projects}}
+<a href="/{{dir}}" target="_blank">
+    <div class="proj-container">
+        <p>{{title}}</p>
+        <div class='imageCont'>
+            <img src="/{{dir}}/thumbnail.png">
         </div>
-    </a>
-    {{/projects}}
     </div>
+</a>
+{{/projects}}
+</div>
