@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Connect Four",
+        "dir": "connect-four"
+    },
+    {
+        "title": "German Numbers",
+        "dir": "translate-numbers"
+    },
+    {
+        "title": "Country Search",
+        "dir": "incremental-search"
+    },
+    {
+        "title": "Spotify Search",
+        "dir": "spotify-search"
+    },
+    {
+        "title": "Kitty Carousel",
+        "dir": "carousel"
+    },
+    {
+        "title": "Message in a Bottle",
+        "dir": "local-storage"
+    },
+    {
+        "title": "Resizable Panes",
+        "dir": "panes"
+    },
+    {
+        "title": "Welcome to Spiced",
+        "dir": "welcome-website"
+    },
+    {
+        "title": "Ticker Horror",
+        "dir": "ticker"
+    }
+]
