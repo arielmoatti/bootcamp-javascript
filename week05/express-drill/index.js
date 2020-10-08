@@ -15,9 +15,25 @@ app.use(
 
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+    if (!req.cookies.accepted && req.url != "/cookie") {
+        console.log("cookies were NOT accepted, denied");
+        //store the path in a cookie
+        res.cookie("url", req.originalUrl);
+        res.redirect("/cookie");
+    } else {
+        next(); //return????
+    }
+});
+
 app.use(express.static("./projects"));
 
 //~~~~~~~~~routes
+
+app.get("/", (req, res) => {
+    res.send(generateHtml()); //the building of the main HTML!
+});
+
 app.get("/cookie", (req, res) => {
     //welcomes the user to accept coockies.
     res.send(
@@ -39,21 +55,6 @@ app.post("/cookie", (req, res) => {
             `<p>Your access to this website was denide. You must accept our cookie policy first!</p>`
         );
     }
-});
-
-app.use((req, res, next) => {
-    if (!req.cookies.accepted) {
-        console.log("cookies were NOT accepted, denied");
-        //store the path in a cookie
-        res.cookie("url", req.originalUrl);
-        res.redirect("/cookie");
-    } else {
-        return next(); //return????
-    }
-});
-
-app.get("/", (req, res) => {
-    res.send(generateHtml()); //the building of the main HTML!
 });
 
 app.listen(8080, () => console.log("server is listening..."));
