@@ -4,8 +4,22 @@ const { generateHtml } = require("./html-builder.js"); //imports the Html builde
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const basicAuth = require("basic-auth");
+const auth = function (req, res, next) {
+    const creds = basicAuth(req);
+    if (!creds || creds.name != "ariel" || creds.pass != "123") {
+        res.setHeader(
+            "WWW-Authenticate",
+            'Basic realm="Enter your credentials to see this stuff."'
+        );
+        res.sendStatus(401);
+    } else {
+        next();
+    }
+};
 
 //~~~~~~~~~MIDDLEWARE
+app.use("/carousel", auth);
 
 app.use(
     express.urlencoded({
