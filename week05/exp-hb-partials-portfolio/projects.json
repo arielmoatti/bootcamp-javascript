@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Connect Four",
+        "dir": "connect-four",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "German Numbers",
+        "dir": "translate-numbers",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Country Search",
+        "dir": "incremental-search",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Spotify Search",
+        "dir": "spotify-search",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Kitty Carousel",
+        "dir": "carousel",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Message in a Bottle",
+        "dir": "local-storage",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Resizable Panes",
+        "dir": "panes",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Flying Sticky",
+        "dir": "canvas-stick-figure",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Welcome to Spiced",
+        "dir": "welcome-website",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    },
+    {
+        "title": "Ticker Horror",
+        "dir": "ticker",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+    }
+]

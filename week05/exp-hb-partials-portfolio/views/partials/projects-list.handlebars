@@ -1,0 +1,18 @@
+{{#if home}}
+    {{#projects}}
+        <div class="home">
+            <a href="/p/{{dir}}">
+                <div class="proj-container">
+                    <p>{{title}}</p>
+                    <div class='imageCont'>
+                        <img src="/{{dir}}/thumbnail.png">
+                    </div>
+                </div>
+            </a>
+        </div>
+    {{/projects}}
+    {{else}}
+        {{#projects}}
+            <a href="/p/{{dir}}">{{title}}</a>
+        {{/projects}}
+{{/if}}

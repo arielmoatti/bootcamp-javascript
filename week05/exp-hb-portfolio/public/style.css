@@ -12,7 +12,7 @@ body {
 }
 
 #main-container {
-    border: 2px solid grey;
+    /* border: 2px solid grey; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

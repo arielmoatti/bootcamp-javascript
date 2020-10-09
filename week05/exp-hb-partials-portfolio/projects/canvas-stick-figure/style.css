@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#canvas {
+    /* visibility: hidden; */
+    display: none;
+    position: absolute;
+    top: 120px;
+    left: 150px;
+    /* border: 3px solid black; */
+}
+
+#canvasAnim {
+    position: absolute;
+    top: 120px;
+    left: 150px;
+    background-color: lightblue;
+    /* background-color: transparent; */
+    border: 3px solid black;
+}
+
+button {
+    /* z-index: 10; */
+    position: absolute;
+    left: 400px;
+    top: 125px;
+    /* transform: translateX(-50%); */
+}

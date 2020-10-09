@@ -1,0 +1,15 @@
+<h4>TEST</h4>
+<div class="desc">
+    <nav>
+        {{>projects-list}}
+    </nav>
+    {{#selectedProject}}    
+        <h1>{{title}}</h1>
+        <div class='imageCont'>
+            <img src="/{{dir}}/screenshot.gif">
+            {{!-- <img src="/{{dir}}/thumbnail.png"> --}}
+        </div>
+        <div class="description-text">{{description}}</div>
+        <a href="/{{dir}}" target="_blank">Launch</a>
+    {{/selectedProject}}    
+</div>
