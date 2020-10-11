@@ -31,10 +31,14 @@ app.get("/", (req, res) => {
 app.get("/p/:project", (req, res) => {
     const { project } = req.params;
     const selectedProject = projects.find((item) => item.dir === project);
-    res.render("description", {
-        selectedProject,
-        projects,
-    });
+    if (!selectedProject) {
+        return res.sendStatus(404);
+    } else {
+        res.render("description", {
+            selectedProject,
+            projects,
+        });
+    }
 });
 //
 //

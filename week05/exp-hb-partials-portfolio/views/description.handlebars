@@ -1,15 +1,17 @@
-<h4>TEST</h4>
 <div class="desc">
     <nav>
+        <p>Projects List</p>
         {{>projects-list}}
     </nav>
+    <div class="desc-body">
     {{#selectedProject}}    
-        <h1>{{title}}</h1>
+        <h2>{{title}}</h2>
         <div class='imageCont'>
+        <a href="/{{dir}}" target="_blank">
             <img src="/{{dir}}/screenshot.gif">
-            {{!-- <img src="/{{dir}}/thumbnail.png"> --}}
+        </a>
         </div>
         <div class="description-text">{{description}}</div>
-        <a href="/{{dir}}" target="_blank">Launch</a>
-    {{/selectedProject}}    
+    {{/selectedProject}}
+    </div>
 </div>
