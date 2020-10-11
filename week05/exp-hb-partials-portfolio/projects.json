@@ -2,17 +2,17 @@
     {
         "title": "Connect Four",
         "dir": "connect-four",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+        "description": "First web game I ever created! Tackling the diagonal wins was the main challenge, but I also added scores, turn indicator, animation and own special design... click the image to have a go!"
     },
     {
         "title": "German Numbers",
         "dir": "translate-numbers",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+        "description": "The objective was to treat the alert's input and assign it with words. I found a neat solution with a simple word array, and match the input to its index + 1... added a 'reset' button and animation just for fun. This was also the first time I embedded an external font! click the image to have a go!"
     },
     {
         "title": "Country Search",
         "dir": "incremental-search",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae nobis alias dolores molestias nesciunt perferendis quasi adipisci ad ullam quis! Quibusdam itaque quasi nostrum esse repellat cupiditate quaerat, deserunt rerum."
+        "description": "Incremental search in action, looping through an API and tackling mouse and keyboard events, hovering feedback and added 'clear' button... have a go!"
     },
     {
         "title": "Spotify Search",
