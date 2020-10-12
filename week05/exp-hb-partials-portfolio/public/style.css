@@ -92,10 +92,11 @@ footer p {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-template-rows: 50% 50%;
-    column-gap: 10px;
-    row-gap: 40px;
+    column-gap: 20px;
+    row-gap: 60px;
     justify-items: center;
     max-width: 96vw;
+    padding: 40px 100px;
     /* border: 2px solid grey; */
     /*
     display: flex;
@@ -128,7 +129,7 @@ a {
 .proj-container > p {
     /* border: 2px solid red; */
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 15px;
     order: 1;
     text-decoration: none;
     align-self: center;
@@ -146,9 +147,13 @@ a {
     z-index: 0;
     overflow: hidden;
     display: flex;
+    filter: saturate(10%);
     /* align-items: center; */
 }
 
+.home .imageCont:hover {
+    filter: saturate(100%);
+}
 img {
     max-height: 100%;
 }
