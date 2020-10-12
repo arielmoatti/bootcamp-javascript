@@ -3,6 +3,8 @@
 }
 body {
     background-color: antiquewhite;
+    background-image: url("twitter-wallpaper-4.jpg");
+    background-size: cover;
 }
 
 #ticker {
@@ -37,6 +39,10 @@ a {
 
 p {
     padding: 5em;
+    font-family: "Raleway", sans-serif;
+    font-size: 25px;
+    letter-spacing: 0.3rem;
+
     /* visibility: hidden; */
 }
 

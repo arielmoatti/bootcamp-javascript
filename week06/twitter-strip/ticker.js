@@ -1,9 +1,8 @@
-const secrets = require("./secrets.json");
+const { Key, Secret } = require("./secrets.json");
 const https = require("https");
-const { text } = require("express");
 
 module.exports.getToken = function (callback) {
-    let creds = `${secrets.Key}:${secrets.Secret}`;
+    let creds = `${Key}:${Secret}`;
     let encodedCreds = Buffer.from(creds).toString("base64");
 
     const options = {
@@ -80,7 +79,8 @@ module.exports.filterTweets = function (tweets) {
     for (let i = 0; i < filteredArr.length; i++) {
         let obj = {};
         obj.url = filteredArr[i].entities.urls[0].url;
-        obj.enclosedTextContent = filteredArr[i].full_text.split(" http")[0];
+        let tweetLong = filteredArr[i].full_text.split(" http")[0];
+        obj.enclosedTextContent = tweetLong.substr(0, 45) + "...";
 
         tweetsArr.push(obj);
     }

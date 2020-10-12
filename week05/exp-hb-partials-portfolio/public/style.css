@@ -140,20 +140,24 @@ a {
 
 .home .imageCont {
     border-radius: 50%;
-    height: 180px;
-    width: 180px;
+    height: 150px;
+    width: 150px;
     /* border: 3px ridge #30475e; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
     z-index: 0;
     overflow: hidden;
     display: flex;
     filter: saturate(10%);
-    /* align-items: center; */
+    transition: filter 0.5s;
+    transition: transform 400ms;
+    /* transform: scale(1); */
 }
 
 .home .imageCont:hover {
     filter: saturate(100%);
+    transform: scale(1.1);
 }
+
 img {
     max-height: 100%;
 }
@@ -185,6 +189,7 @@ img {
 }
 
 .desc a {
+    transition: background-color 300ms;
     padding: 5px;
     display: block;
     color: #666b6a;
@@ -224,11 +229,12 @@ img {
     /* shadow: 5px 5px 10px rgba(0, 0, 0, 0.8); */
 }
 
-.desc .imageCont:hover {
+.desc .imageCont img:hover {
+    transition: filter 400ms;
+    filter: brightness(50%);
     /* filter: blur(5px); */
     /* opacity: 1; */
 
-    filter: brightness(50%);
     /* border: 3px solid red; */
     /* filter: saturate(0%); */
     /* transform: scale(1.5); */
