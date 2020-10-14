@@ -24,7 +24,6 @@ function logSizes(dir) {
 } //closes the logSized function
 
 logSizes(myPath).then(() => console.log("done!"));
-
 /*
 
 function logSizes(dir) {
