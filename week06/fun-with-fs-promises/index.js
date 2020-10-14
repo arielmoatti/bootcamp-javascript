@@ -8,7 +8,7 @@ const myPath = `${__dirname}/files`;
 // const fs = require("fs");
 
 function logSizes(dir) {
-    return readdir(dir).then((content) => {
+    return readdir(dir, { withFileTypes: true }).then((content) => {
         for (let i = 0; i < content.length; i++) {
             if (content[i].isFile()) {
                 //if it's a file do this
@@ -23,7 +23,7 @@ function logSizes(dir) {
     }); //closes the readdir promise
 } //closes the logSized function
 
-logSizes(myPath);
+logSizes(myPath).then(() => console.log("done!"));
 
 /*
 
