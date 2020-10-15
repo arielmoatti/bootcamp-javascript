@@ -5,8 +5,6 @@
 const { readdir, stat } = require("fs").promises;
 const myPath = `${__dirname}/files`;
 
-// const fs = require("fs");
-
 function logSizes(dir) {
     return readdir(dir, { withFileTypes: true }).then((content) => {
         for (let i = 0; i < content.length; i++) {
@@ -24,20 +22,24 @@ function logSizes(dir) {
 } //closes the logSized function
 
 logSizes(myPath).then(() => console.log("done!"));
-/*
 
+/* version without comments...
+
+const { readdir, stat } = require("fs").promises;
+const myPath = `${__dirname}/files`;
 function logSizes(dir) {
-    return readdir(dir).then((content) => {
+    return readdir(dir, { withFileTypes: true }).then((content) => {
         for (let i = 0; i < content.length; i++) {
-            if (content[i].isFile) {
+            if (content[i].isFile()) {
                 stat(`${dir}/${content[i].name}`).then((data) => {
                     console.log(`${dir}/${content[i].name}:`, data["size"]);
                 });
-            } else if (content[i].isDirectory) {
+            } else if (content[i].isDirectory()) {
                 logSizes(`${dir}/${content[i].name}`);
             }
         }
     });
 }
-console.log(logSizes(myPath));
+
+logSizes(myPath).then(() => console.log("done!"));
 */
